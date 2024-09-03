@@ -1,0 +1,5647 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://lzhms.github.io/XidianCS/ComputerTheory/EmbeddedSystem/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../Mathematics/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>自主可控嵌入式系统 - 西电计科学习指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="西电计科学习指南" class="md-header__button md-logo" aria-label="西电计科学习指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            西电计科学习指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              自主可控嵌入式系统
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-purple"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LZHMS/XidianCS" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LZHMS/XidianCS
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  主页
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  计算机理论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Mathematics/" class="md-tabs__link">
+          
+  
+    
+  
+  数学基础
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="西电计科学习指南" class="md-nav__button md-logo" aria-label="西电计科学习指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    西电计科学习指南
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LZHMS/XidianCS" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LZHMS/XidianCS
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    主页
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            主页
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Home/Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    前言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    计算机理论
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机理论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    自主可控嵌入式系统
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    自主可控嵌入式系统
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一讲 嵌入式系统概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一讲 嵌入式系统概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式系统三要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式系统的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式处理器的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式操作系统的分类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二讲 嵌入式系统基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二讲 嵌入式系统基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      体系结构-存储器组织
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="体系结构-存储器组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      冯诺依曼体系结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      哈佛体系结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      多任务程序结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多任务程序结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      前后台程序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件触发结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三讲 ARM 基本编程模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三讲 ARM 基本编程模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM处理器特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 技术
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thumb 技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      开发背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 概述
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM处理器工作状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM处理器工作状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#armarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM状态(ARM指令集)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbthumb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb状态(Thumb指令集)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态切换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      寄存器组织
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 状态下的寄存器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第四讲 ARM 指令系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四讲 ARM 指令系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loadstore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store 结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 寻址方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 指令集概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM 指令集概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据处理指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadstore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store 指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      杂项指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      第五讲 ARM 指令详细介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第五讲 ARM 指令详细介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据处理指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据处理指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据传送指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      算术运算指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑运算指令(4条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      比较指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      乘法指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadstore_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load/Store指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      单寄存器存取指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多寄存器存取指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      存储器和寄存器交换指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      跳转指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="跳转指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM程序跳转概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM程序跳转
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序状态寄存器访问指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      异常产生指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      协处理器指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      第六讲 ARM汇编
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第六讲 ARM汇编">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="伪操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      符号定义伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据定义伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      汇编控制伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      信息报告伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他伪操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM语言伪指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#armc" class="md-nav__link">
+    <span class="md-ellipsis">
+      第七讲 ARM下的C编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第七讲 ARM下的C编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      了解C运行时库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      宏和函数的区别
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="宏和函数的区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度器上锁机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断级调度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      时钟节拍
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mucos-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      第十三讲 $\mu$COS-II的任务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第十三讲 $\mu$COS-II的任务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务的创建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务的挂起与恢复机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务的挂起与恢复机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      LCD显示——水平直线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mucos" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\mu$cos信号量任务管理——键盘识别显示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swp" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于SWP指令的信号量访问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ledgpiob" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED——基于GPIOB口的发光二极管设计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mucos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\mu$cos互斥管理——串口输出信息
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序题准备部分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="程序题准备部分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      多任务应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      互斥型信号量应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      LCD显示屏相关函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM汇编程序设计
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../Mathematics/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    数学基础
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一讲 嵌入式系统概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一讲 嵌入式系统概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式系统三要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式系统的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式处理器的分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      嵌入式操作系统的分类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      第二讲 嵌入式系统基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第二讲 嵌入式系统基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      体系结构-存储器组织
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="体系结构-存储器组织">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      冯诺依曼体系结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      哈佛体系结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      多任务程序结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="多任务程序结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      前后台程序结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      事件触发结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      第三讲 ARM 基本编程模型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三讲 ARM 基本编程模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM处理器特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 技术
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Thumb 技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      开发背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 概述
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM处理器工作状态
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM处理器工作状态">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#armarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM状态(ARM指令集)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumbthumb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb状态(Thumb指令集)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态切换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      寄存器组织
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thumb_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumb 状态下的寄存器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      第四讲 ARM 指令系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第四讲 ARM 指令系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loadstore" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store 结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 寻址方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM 指令集概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM 指令集概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据处理指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadstore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store 指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      杂项指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      第五讲 ARM 指令详细介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第五讲 ARM 指令详细介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据处理指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数据处理指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据传送指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      算术运算指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      逻辑运算指令(4条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      比较指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      测试指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      乘法指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loadstore_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load/Store指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load/Store指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      单寄存器存取指令(6条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      多寄存器存取指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      存储器和寄存器交换指令(2条)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      跳转指令
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="跳转指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM程序跳转概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM程序跳转
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序状态寄存器访问指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      异常产生指令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      协处理器指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      第六讲 ARM汇编
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第六讲 ARM汇编">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      伪操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="伪操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      符号定义伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据定义伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      汇编控制伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      信息报告伪操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      其他伪操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM语言伪指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#armc" class="md-nav__link">
+    <span class="md-ellipsis">
+      第七讲 ARM下的C编程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第七讲 ARM下的C编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      了解C运行时库
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      宏和函数的区别
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="宏和函数的区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      调度器上锁机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      中断级调度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      时钟节拍
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mucos-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      第十三讲 $\mu$COS-II的任务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第十三讲 $\mu$COS-II的任务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务的创建
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      任务的挂起与恢复机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="任务的挂起与恢复机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      LCD显示——水平直线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mucos" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\mu$cos信号量任务管理——键盘识别显示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swp" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于SWP指令的信号量访问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ledgpiob" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED——基于GPIOB口的发光二极管设计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mucos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      $\mu$cos互斥管理——串口输出信息
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      程序题准备部分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="程序题准备部分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      多任务应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      互斥型信号量应用函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lcd_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      LCD显示屏相关函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM汇编程序设计
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributors
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>自主可控嵌入式系统</h1>
+
+<h2 id="_1">第一讲 嵌入式系统概述</h2>
+<h3 id="_2">嵌入式系统三要素</h3>
+<ul>
+<li>嵌入性：嵌入到对象体系中，有对象环境要求</li>
+<li>专用性：软、硬件按对象要求裁剪</li>
+<li>计算机：实现对象的智能化功能</li>
+</ul>
+<p>{% message color:info title:嵌入式系统定义 size:default%}</p>
+<ul>
+<li>标准定义：以应用为中心、以<strong>计算机技术</strong>为基础，<strong>软、硬件可裁剪</strong>，适应应用系统对功能、可靠性、成本、体积、功耗等<strong>严格要求</strong>的专用计算机系统。</li>
+<li>核心要义：嵌入到对象体中的专用计算机系统
+{% endmessage %}</li>
+</ul>
+<p>{% message color:info size:default%}
+嵌入式系统的核心：计算技术；嵌入式系统的灵魂：软件技术
+{% endmessage %}</p>
+<h3 id="_3">嵌入式系统的分类</h3>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225539.png" alt="硬件范畴上的分类" width="40%"/>
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225602.png" alt="软件范畴上的分类" width="40%"/></p>
+<h3 id="_4">嵌入式处理器的分类</h3>
+<p>嵌入式系统硬件的核心部件是嵌入式处理器，按照用途可以为分：</p>
+<ul>
+<li>嵌入式微控制器 (Micro Controller Unit, MCU): 单片机</li>
+<li>嵌入式 DSP (Digital Signal Processor, DSP)</li>
+<li>嵌入式微处理器 (Micro Processor Unit, MPU): ARM</li>
+<li>SOC(System on a Chip, SOC)</li>
+<li>SOPC(System on a Programmable Chip, SOPC)</li>
+</ul>
+<h3 id="_5">嵌入式操作系统的分类</h3>
+<p>操作系统：连接计算机硬件与应用程序的系统程序</p>
+<ul>
+<li>非实时操作系统: Linux</li>
+<li>实时操作系统: RTOS (Real-Time Operating System, 程序对时间要求十分严格: 计算的正确性不仅取决于程序的逻辑正确性，更取决于结果产生的时间)</li>
+</ul>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225623.png" alt="MCU与MPU的结构区别" width="70%"/></p>
+<h2 id="_6">第二讲 嵌入式系统基础</h2>
+<h3 id="-">体系结构-存储器组织</h3>
+<h4 id="_7">冯诺依曼体系结构</h4>
+<ul>
+<li>冯诺依曼体系理论</li>
+<li>计算机的数制采用二进制</li>
+<li>计算机按照程序顺序执行</li>
+<li>要点</li>
+<li>程序存储、程序执行</li>
+<li>输入、存储、运算、控制和输出</li>
+<li>程序指令存储器和数据存储器共用同一存储器，统一编址；程序指令和数据的宽度相同</li>
+</ul>
+<h4 id="_8">哈佛体系结构</h4>
+<ul>
+<li>程序指令存储器和数据存储器使用两个独立的存储器，实现并行处理；</li>
+<li>使用独立的两条总线，用于CPU与两个存储器进行通信</li>
+</ul>
+<h3 id="_9">基本概念</h3>
+<ul>
+<li>CPU 字长: 微处理器一次执行处理的数据宽度</li>
+<li>指令集: CPU 所能执行的所有指令的集合</li>
+<li>复杂指令集(CISC, Complex Instruction Set Computer)</li>
+<li>具有大量指令和寻址方式</li>
+<li>大多数程序只使用少量的指令就能够运行</li>
+<li>精简指令集(RISC, Reduced Instruction Set Computer)</li>
+<li>只包含最有用的指令</li>
+<li>数据通道快速执行每一条指令</li>
+<li>特点对比</li>
+<li>RISC指令格式和长度固定，指令类型少，功能简单，寻址方式少，采用规则的硬布线逻辑(组合逻辑型)</li>
+<li>CISC使用微码ROM进行指令译码(存储逻辑型)</li>
+<li>RICS大多数指令单周期运行，分开的Load/Store结构的存取指令，固定指令格式</li>
+<li>CISC强调硬件的复杂性，RISC注重编译器的复杂性</li>
+<li>数据通道对比(RISC的任何运算只能在REG上执行，ALU的数据来源只能是REG，提高执行效率，对比CISC有数量级上的改善)
+  <img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225646.png" alt="CISC与RISC数据通道对比" width="50%"/></li>
+</ul>
+<h3 id="_10">多任务程序结构</h3>
+<h4 id="_11">前后台程序结构</h4>
+<ul>
+<li>前台</li>
+<li>中断实现</li>
+<li>处理对时间要求严格事件、突发事件</li>
+<li>后台</li>
+<li>轮询多任务实现</li>
+<li>处理对时间要求不严格事件</li>
+</ul>
+<p>注：前后台是两种服务模式，前台对接时间严格事件，通过中断方式进行响应；后台对接时间不严格事件，分配时间片轮询处理每个任务</p>
+<h4 id="_12">事件触发结构</h4>
+<ul>
+<li>状态机：实际上是有限状态机，类比马尔可夫决策</li>
+<li>事件查询：(在状态中判断事件)主体是某一特定状态，决策是采取的不同事件，结果是执行不同功能，迁移到新状态</li>
+<li>事件触发：(在事件中判断状态)主体是某一特定事件，决策是执行的不同动作，依据是当前的状态，结果是执行不同功能，迁移到新状态</li>
+</ul>
+<h4 id="_13">操作系统</h4>
+<ul>
+<li>实现多任务运行，进程调度</li>
+</ul>
+<h2 id="arm">第三讲 ARM 基本编程模型</h2>
+<blockquote>
+<p>ARM=Advanced RISC Machines</p>
+</blockquote>
+<h3 id="arm_1">ARM处理器特点</h3>
+<ul>
+<li>Load/Store 体系结构</li>
+<li>16位/32位双指令集</li>
+<li>3地址指令格式</li>
+</ul>
+<h3 id="thumb">Thumb 技术</h3>
+<h4 id="_14">开发背景</h4>
+<ul>
+<li>RISC代码密度低，需要比较大的存储器空间(RISC指令简单，完成同一个功能需要多条指令，因此需要更大的存储器空间)</li>
+<li>需要32位RISC处理器的性能和16位CISC处理器的代码密度(32位RISC的性能, 16位CISC的代码密度)</li>
+</ul>
+<h4 id="thumb_1">Thumb 概述</h4>
+<ul>
+<li>技术概述</li>
+<li>16位的指令长度</li>
+<li>32位的执行效率</li>
+<li>拥有2套独立的指令集</li>
+</ul>
+<h3 id="arm_2">ARM处理器工作状态</h3>
+<h4 id="armarm">ARM状态(ARM指令集)</h4>
+<ul>
+<li>执行32位的字对齐的ARM指令</li>
+</ul>
+<h4 id="thumbthumb">Thumb状态(Thumb指令集)</h4>
+<ul>
+<li>执行16位的、半字对齐的Thumb指令</li>
+</ul>
+<h4 id="_15">状态切换</h4>
+<ul>
+<li>两个指令集均有切换处理器状态的指令</li>
+<li>开始执行代码时处于ARM状态；异常处理时也处于ARM状态；异常处理返回时，可以返回到Thumb状态</li>
+</ul>
+<h4 id="_16">运行模式</h4>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225714.png" alt="处理器运行模式" width="60%"/></p>
+<ul>
+<li>特权模式：除了用户模式外的其他模式</li>
+<li>异常模式：除了用户模式、系统模式外的其他模式</li>
+<li>功能说明
+{% message color:info size:default%}
+系统模式运行特权操作系统任务(与用户模式有完全相同的寄存器组)
+异常模式主要处理中断和异常
+{% endmessage %}</li>
+</ul>
+<h4 id="_17">寄存器组织</h4>
+<p>ARM有37个32位长的寄存器：
++ 1个PC(Program Counter), 30个通用寄存器, 1个CPSR(Current Program Status Register), 1个SPSR(Saved Program Status Register)
++ 31个通用32位寄存器，6个状态寄存器
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225738.png" alt="寄存器的模式分布" width="60%"/></p>
+<ul>
+<li>寄存器功能说明</li>
+<li>R0$\sim$R13: 保存数据/地址值的通用寄存器，无特殊用途</li>
+<li>R0$\sim$R7: 未分组寄存器，是所有处理器模式对应的通用寄存器，无特殊处理模式</li>
+<li>R8$\sim$R12: 一个分组用于除FIQ模式之外的所有寄存器模式，另一组用于FIQ模式，目的：发生FIQ中断时，可以加速FIQ的处理速度，解释：专门为FIQ中断保留一组特定寄存器，能够保证在发生FIQ中断时，没有其他模式占用这一分组的寄存器(数据占用，处理器只能处于一个模式)，可以使得中断处理更加迅速，因此也称为快中断模式</li>
+<li>R13$\sim$R14: 有6个分组的寄存器，一个用于用户与系统模式，其余5个分别用于5中异常模式，解释：寄存器设置也同理，异常模式下，每当发生特定异常时，处理器需要进行异常处理，需要保证存在相应的寄存器能够为之提供服务，而不至于被其他模式所占用</li>
+<li>R13: 堆栈指针寄存器，常作为堆栈指针(SP)<ul>
+<li>不严谨解释: 用户和系统模式共用同一R13，存放程序的指令代码以及其他数据；异常模式具有自己独立的物理寄存器R13：当程序进入不同的异常模式时，可以将需要保护的寄存器放入对应的R13所指向的堆栈中，当程序从异常模式返回时，则从对应的堆栈中恢复，</li>
+<li>初始化要求：需要初始化每种模式下的R13</li>
+</ul>
+</li>
+<li>R14: 链接寄存器(LR)，模式本身的R14用于保存子程序返回地址；进入异常模式时对应的R14用于保存异常返回地址<ul>
+<li>子程序调用返回：调用子程序时，指令先将下一条指令的PC值拷贝到R14，执行完子程序后，再将R14的值拷贝到PC，从而实现子程序的返回</li>
+<li>异常处理的返回</li>
+</ul>
+</li>
+<li>R15: 程序计数器(PC)，指向正在取指的地址<ul>
+<li>ARM状态下，位[1:0]为0，位[31:2]保存PC</li>
+<li>Thumb状态下，位[0]为0，位[31:1]保存PC</li>
+<li>ARM体系结构采用多级流水线技术，使得PC值为当前指令的地址值加8个字节</li>
+</ul>
+</li>
+<li>CPSR、SPSR: 程序状态寄存器，程序状态保存寄存器，SPSR仅在异常模式下能够被访问: 进入异常模式时，SPSR保存CPSR的值，异常返回时，通过SPSR的值恢复CPSR的值</li>
+</ul>
+<h4 id="thumb_2">Thumb 状态下的寄存器</h4>
+<p>可以直接访问的寄存器: 8个通用寄存器R0$\sim$R7，程序计数器(PC)，堆栈指针(SP)，链接寄存器(LR)，程序状态寄存器(CPSR)，程序状态保存寄存器(SPSR)
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225756.png" alt="两种状态下的寄存器映射" width="70%"/></p>
+<h2 id="arm_3">第四讲 ARM 指令系统</h2>
+<h3 id="loadstore">Load/Store 结构</h3>
+<ul>
+<li>所有操作数都存储在通用寄存器中</li>
+<li>图解: MEM $\rightarrow$ REG $\rightarrow$ ALU $\rightarrow$ MEM</li>
+</ul>
+<h3 id="arm_4">ARM 指令</h3>
+<ul>
+<li>指令分类：数据处理指令，Load/Store 指令，跳转指令，CPSR处理指令，异常产生指令，协处理器指令;</li>
+<li>特殊指令：CPSR 处理指令</li>
+<li>ARM 状态下，指令根据 CPSR 中条件码状态和指令条件域条件执行</li>
+<li>嵌入式微处理器指令集：强调指令的灵活性，对称性，简单性</li>
+</ul>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225820.png" alt="ARM指令基本格式" width="50%"/></p>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225837.png" alt="ARM指令集编码" width="70%"/></p>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225922.png" alt="ARM指令条件码表" width="50%"/></p>
+<p>指令编码说明:</p>
+<ul>
+<li>bit $12\sim15$: 4 bits 编码表示 $16$ 个通用寄存器</li>
+<li>bit $28\sim31$: 指令条件码占据指令的高 $4$ bits, 并且条件编码 "1111" 为系统保留</li>
+</ul>
+<h4 id="arm_5">ARM 寻址方式</h4>
+<p>{% message color:info size:default%}
+  理解ARM三地址指令格式的特点
+  {% endmessage %}
++ 立即寻址: 操作数(立即数)包含在指令的 $32$ 位编码中
+  {% message color:info size:default%}
++ 指令说明
+  + 只有第二源操作数可用立即数
+  + 立即数以 "#" 为前缀，"#" 后加 "0x" 或 "&amp;" 表示十六进制，"0b" 表示二进制，"0d" 或缺省表示十进制
++ Example
+  + ADD R$0$, R$0$, #$1$
+  + AND R$3$, R$4$, #$0$xFF
+    {% endmessage %}</p>
+<p>{% message color:info title:立即数的表示 size:default%}</p>
+<ul>
+<li>指令中立即数编码比特位: $12$位</li>
+<li>
+<p>扩散数据表示范围: $12$ 位数据表示 $32$ 位数据空间</p>
+</li>
+<li>
+<p>立即数组成: $8$(常数) $+$(偶数移位个数)$=12$</p>
+</li>
+<li>移位方式: 循环右移</li>
+<li>特点: 所有有效位必须小于等于 $8$ 位，右移位数必须为偶数</li>
+<li><a href="../../blog/ARMImmediateNumber/">扩散数据原理</a>
+  {% endmessage %}</li>
+<li>寄存器寻址: 操作数在寄存器中，指令地址码字段编码寄存器编号
+  {% message color:info size:default%}</li>
+<li>
+<p>Example</p>
+</li>
+<li>
+<p>MOV R$1$, R$2$           ; R$1$ = (R$2$)</p>
+</li>
+<li>SUB R$0$, R$1$, R$2$     ; R$0$ = (R$1$) - (R$2$)
+    {% endmessage %}</li>
+<li>寄存器移位寻址: ARM 指令集特有寻址方式，主要为了增强精简指令的执行效率
+  {% message color:info size:default%}</li>
+<li>
+<p>指令说明</p>
+</li>
+<li>
+<p>ARM 移位寻址中，在取操作数送往ALU过程中，就已经在总线上完成了移位运算操作</p>
+</li>
+<li>
+<p>Example</p>
+</li>
+<li>
+<p>MOV R$0$, R$2$, LSL #3         ; R$0$ = (R$2$) &lt;&lt; 3</p>
+</li>
+<li>ANDS R$1$, R$2$, LSL R$3$      ; R$1$ = (R$1$) &amp; (R$2$) &lt;&lt; (R$3$)
+    {% endmessage %}</li>
+</ul>
+<p>{% message color:info title:移位方式 size:default%}</p>
+<ul>
+<li>LSL(Logical Shift Left)</li>
+<li>LSR(Logical Shift Right)</li>
+<li>ASL(Arithmetic Shift Left)</li>
+<li>ASR(Arithmetic Shift Right)</li>
+<li>ROR(Rotate Right)</li>
+<li>RRX(Rotate Right Extended by 1 Place)</li>
+</ul>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823225944.png" alt="移位方式图解" width="50%"/></p>
+<p>{% endmessage %}</p>
+<ul>
+<li>基址寻址: 存储器地址在寄存器中
+  {% message color:info size:default%}</li>
+<li>指令说明
+  寄存器中存储的是存储单元的地址</li>
+<li>
+<p>Example</p>
+</li>
+<li>
+<p>LDR R$0$, [R$1$]</p>
+</li>
+<li>STR R$0$, [R$1$]
+    {% endmessage %}</li>
+<li>变址寻址: 基址寄存器+地址偏移量
+{% message color:info size:default%}</li>
+<li>
+<p>地址偏移量</p>
+</li>
+<li>
+<p>立即数</p>
+<ul>
+<li>控制位 U=$1$时加偏移量，U=$0$时减偏移量</li>
+<li>偏移量占 $12$ Bit(立即数)</li>
+</ul>
+</li>
+<li>Example:<ul>
+<li>LDR R$0$, [R$1$, #4]</li>
+<li>LDR R$0$, [R$1$, #-4]</li>
+</ul>
+</li>
+<li>寄存器<ul>
+<li>控制位 U=$1$时加索引寄存器值，U=$0$时减索引寄存器值</li>
+</ul>
+</li>
+<li>Example:<ul>
+<li>LDR R$0$, [R$1$, R$2$]</li>
+<li>LDR R$0$, [R$1$, -R$2$]</li>
+</ul>
+</li>
+<li>寄存器及移位常数<ul>
+<li>地址偏移量由寄存器通过移位得到</li>
+</ul>
+</li>
+<li>Example:<ul>
+<li>LDR R$0$, [R$1$, R$2$, LSL #2]
+{% endmessage %}</li>
+</ul>
+</li>
+</ul>
+<p>{% message color:info title:变址模式 size:default%}
+前变址模式
++ LDR R$0$, [R$1$, #$4$]        ; R$0$ = Mem$32$[R$1$+$4$]</p>
+<p>自动变址模式(事先更新方式)</p>
+<ul>
+<li>LDR R$0$, [R$1$, #$4$]!        ; R$0$ = Mem$32$[R$1$+$4$], R$1$ = R$1$ + $4$</li>
+</ul>
+<p>后变址模式(事后更新方式)</p>
+<ul>
+<li>LDR R$0$, [R$1$], #$4$        ; R$0$ = Mem$32$[R$1$], R$1$ = R$1$ + $4$
+{% endmessage %}
+3种地址偏移格式与3种变址模式，可以组合出9种类型的变址寻址方式。</li>
+<li>相对寻址: 基址寄存器是程序计数器 PC
+  {% message color:info size:default%}</li>
+<li>主要用于分支指令</li>
+<li>Example</li>
+</ul>
+<pre><code class="language-arm">    BL SUBR       ; jump to SUBR
+SUBR              ; entry of subprogram
+    ....
+    MOV PC, R14
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>块拷贝寻址
+  {% message color:info size:default%}</li>
+<li>多寄存器传送指令 LDM/STM 的寻址方式</li>
+<li>寄存器组可以是 $16$ 个通用寄存器的任意子集</li>
+<li>地址增长顺序: IA(Increment After), IB(Increment Before), DA(Decrement After), DB(Decrement Before)</li>
+<li>Example
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230002.png" alt="不同地址增长顺序的寻址模式" width="50%"/></li>
+</ul>
+<p>{% endmessage %}</p>
+<ul>
+<li>堆栈寻址
+  {% message color:info size:default%}</li>
+<li>堆栈形式</li>
+<li>满递增(指令：LDMFA, STMFA)</li>
+<li>空递增(指令：LDMEA, STMEA)</li>
+<li>满递减(指令：LDMFD, STMFD)</li>
+<li>空递减(指令：LDMFD, STMFD)
+    注：FD(Full Decrement), ED(Empty Decrement), FA(Full Aggrandizement), EA(Empty AdvanceAggrandizement)</li>
+<li>Example</li>
+<li>ARM指令中的堆栈<ul>
+<li>STMFD SP!, {R$1$-R$7$, LR}</li>
+<li>LDMFD SP!, {R$1$-R$7$, LR}</li>
+</ul>
+</li>
+<li>Thumb指令中的堆栈<ul>
+<li>PUSH {R1-R7, LR}</li>
+<li>POP {R1-R7, PC}
+{% endmessage %}</li>
+</ul>
+</li>
+</ul>
+<h4 id="arm_6">ARM 指令集概述</h4>
+<h5 id="_18">数据处理指令</h5>
+<ol>
+<li>主要完成<strong>寄存器</strong>中数据的算术和逻辑运算操作</li>
+<li>数据宽度：所有操作数都是 $32$ 位宽度</li>
+</ol>
+<h5 id="loadstore_1">Load/Store 指令</h5>
+<p>该类指令用于寄存器与内存中数据传送，因为ALU的数据来源只能是寄存器，寄存器中数据要提前从内存中获取。
++ 单寄存器存取指令(LDR/STR)(Load Register/Store Register)
+  + 加载/存储字/半字/字节(32位对齐/16位对齐/8位对齐)
++ 多寄存器存取指令(LDM/STM)(Load Multiple Registers/Store Multiple Registers)
+  + 堆栈操作和块拷贝
++ 存储器与寄存器交换指令SWP</p>
+<h5 id="_19">杂项指令</h5>
+<h2 id="arm_7">第五讲 ARM 指令详细介绍</h2>
+<p>{% message color:info size:default%}
+体会 ARM 指令体系的规整性
+{% endmessage %}</p>
+<h3 id="_20">数据处理指令</h3>
+<h4 id="2">数据传送指令(2条)</h4>
+<ul>
+<li>MOV
+  {% message color:info size:default%}</li>
+<li>指令格式: MOV{条件}{S} 目的寄存器, 源操作数</li>
+<li>源操作数: 寄存器、被移位的寄存器、立即数</li>
+<li>S: 存在S时表示更新CPSR中条件标志位</li>
+<li>
+<p>Example</p>
+</li>
+<li>
+<p>MOV R0, #100</p>
+</li>
+<li>MOV R0, R1</li>
+<li>MOV R0, R1, LSL #2
+    {% endmessage %}</li>
+<li>MVN(Move Not)
+{% message color:info size:default%}</li>
+<li>指令格式: MVN{条件}{S} 目的寄存器, 源操作数</li>
+<li>源操作数: 寄存器、被移位的寄存器、立即数</li>
+<li>指令说明: 将源操作数按位取反传送到目的寄存器，实现逻辑非</li>
+<li>S: 存在S时表示更新CPSR中条件标志位</li>
+<li>Example</li>
+<li>MVN R0, #0  ; 寄存器置1操作
+{% endmessage %}</li>
+</ul>
+<h4 id="6">算术运算指令(6条)</h4>
+<blockquote>
+<p>三地址指令格式</p>
+</blockquote>
+<ul>
+<li>ADD
+{% message color:info size:default%}</li>
+<li>指令格式: ADD{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 + 操作数2</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example</li>
+<li>ADD R0, R1, R2</li>
+<li>ADD R0, R1, #100</li>
+<li>
+<p>ADD R0, R1, R2 LSL #1
+{% endmessage %}</p>
+</li>
+<li>
+<p>ADC
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: ADC{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 + 操作数2 + CF</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 128位数加法</li>
+<li>; 128Num1: R7-R4, 128Num2: R11-R8, 128Sum: R3-R0</li>
+<li>ADDS R0, R4, R8    ; 加低位的字</li>
+<li>ADCS R1, R5, R9    ; 加第二个字，带进位</li>
+<li>ADCS R2, R6, R10   ; 加第三个字，带进位</li>
+<li>
+<p>ADC  R3, R7, R11   ; 加高8位，带进位
+{% endmessage %}</p>
+</li>
+<li>
+<p>SUB
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: SUB{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 - 操作数2</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example:</li>
+<li>SUB R0, R1, R2</li>
+<li>SUB R0, R1, #256</li>
+<li>
+<p>SUB R0, R1, R2 LSL #1
+{% endmessage %}</p>
+</li>
+<li>
+<p>SBC
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: SBC{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 - 操作数2 - $\overline{CF}$</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 64位数减法</li>
+<li>; 64Num1: R1-R0, 64Num2: R3-R2, 64Sub: R1-R0</li>
+<li>SUBS R0, R0, R2    ; 加低位的字</li>
+<li>SBC R1, R1, R3    ; 加第二个字，带进位 </li>
+</ul>
+<p>注解: 假设R3-R0为4位寄存器，做减法: 46H-24H; 
++ 6H-4H = [6H]补 + [-4H]补 = 0110B + 1100B = 0010B $\Rightarrow$ R0 = 2H with CF = 1 (数据有溢出) 
++ 4H-2H-$\overline{CF}$ = [4H]补 + [-2H]补 = 0100B + 1110B = 0010B $\Rightarrow$ R1 = 2H with CF = 1 (数据有溢出)
+{% endmessage %}</p>
+<ul>
+<li>RSB(Reverse Subtract)
+{% message color:info size:default%}</li>
+<li>指令格式: RSB{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数2 - 操作数1</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example:</li>
+<li>RSB R0, R1, R2</li>
+<li>RSB R0, R1, #256</li>
+<li>
+<p>RSB R0, R1, R2 LSL #1
+{% endmessage %}</p>
+</li>
+<li>
+<p>RSC
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: RSC{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数2 - 操作数1 - <strong>CF</strong></li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 64位数减法</li>
+<li>; 64Num1: R1-R0, 64Num2: 0, 64Sub: R3-R2</li>
+<li>RSBS R2, R0, #0</li>
+<li>RSC R3, R1, #0
+{% endmessage %}</li>
+</ul>
+<h4 id="4">逻辑运算指令(4条)</h4>
+<ul>
+<li>AND
+{% message color:info size:default%}</li>
+<li>指令格式: AND{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 &amp; 操作数2</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 屏蔽操作数1的某些位</li>
+<li>
+<p>AND R1, R1, #3
+{% endmessage %}</p>
+</li>
+<li>
+<p>ORR
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: ORR{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 | 操作数2</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 设置操作数1的某些位</li>
+<li>
+<p>ORR R0, R0, #3
+{% endmessage %}</p>
+</li>
+<li>
+<p>EOR
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: EOR{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = 操作数1 ^ 操作数2</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example: 反转操作数1的某些位</li>
+<li>
+<p>EOR R0, R0, #3   ; 低位反转
+{% endmessage %}</p>
+</li>
+<li>
+<p>BIC
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: BIC{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 清除操作数1的某些位，操作数2作为操作数1的掩码，如果操作数2置位，则清除操作数1对应位</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、被移位的寄存器、立即数</li>
+<li>Example:</li>
+<li>BIC R0, R0, #3   ; 清除低两位
+{% endmessage %}</li>
+</ul>
+<h4 id="2_1">比较指令(2条)</h4>
+<ul>
+<li>CMP
+{% message color:info size:default%}</li>
+<li>指令格式: CMP{条件} 操作数1, 操作数2</li>
+<li>指令说明: <strong>操作数1-操作数2</strong>=操作数1+[-操作数2]补码=操作数1+[操作数2]求补，不存储结果，只影响CPSR中标志位</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、立即数</li>
+<li>Example:</li>
+<li>CMP R1, R0</li>
+<li>
+<p>CMP R1, #100
+{% endmessage %}</p>
+</li>
+<li>
+<p>CMN
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: CMN{条件} 操作数1, 操作数2</li>
+<li>指令说明: 操作数1-[操作数2]求补=操作数1+[-[操作数2]求补]补码=操作数1+[[操作数2]求补]求补=<strong>操作数1+操作数2</strong>，不存储结果，只影响CPSR中标志位</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、立即数</li>
+<li>Example:</li>
+<li>CMN R1, R0</li>
+<li>CMN R1, #100
+{% endmessage %}</li>
+</ul>
+<h4 id="2_2">测试指令(2条)</h4>
+<ul>
+<li>TST
+{% message color:info size:default%}</li>
+<li>指令格式: TST{条件} 操作数1, 操作数2</li>
+<li>指令说明: 操作数1 &amp; 操作数2，不存储结果，只影响CPSR中标志位(ZF); 操作数2一般作为位掩码</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、立即数</li>
+<li>Example:</li>
+<li>TST R1, #1     ; 测试最低位是否为1</li>
+<li>
+<p>TST R1, #0xffe
+{% endmessage %}</p>
+</li>
+<li>
+<p>TEQ
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: TEQ{条件} 操作数1, 操作数2</li>
+<li>指令说明: 操作数1 ^ 操作数2，不存储结果，只影响CPSR中标志位(ZF); 通常用于比较操作数1和操作数2是否相等</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器、立即数</li>
+<li>Example:</li>
+<li>TEQ R1, R2
+{% endmessage %}</li>
+</ul>
+<h4 id="6_1">乘法指令(6条)</h4>
+<ul>
+<li>MUL(32位有符号或无符号乘法)
+{% message color:info size:default%}</li>
+<li>指令格式: MUL{条件}{S} 目的寄存器, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2][31...0]，影响CPSR中标志位</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器</li>
+<li>Example:</li>
+<li>MUL R0, R1, R2</li>
+<li>
+<p>MULS R0, R1, R2
+{% endmessage %}</p>
+</li>
+<li>
+<p>MLA(32位有符号或无符号乘加法, Mulliply Add)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: MLA{条件}{S} 目的寄存器, 操作数1, 操作数2, 操作数3</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2 + 操作数3][31...0]，影响CPSR中标志位</li>
+<li>操作数1: 寄存器</li>
+<li>操作数2: 寄存器</li>
+<li>Example:</li>
+<li>MLA R0, R1, R2, R3</li>
+<li>
+<p>MLAS R0, R1, R2, R3
+{% endmessage %}</p>
+</li>
+<li>
+<p>SMULL(64位有符号数乘法, Signed Mulliply Long)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: SMULL{条件}{S} 目的寄存器Low, 目的寄存器High, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2][63...0]，影响CPSR中标志位</li>
+<li>操作数1: 32位寄存器</li>
+<li>操作数2: 32位寄存器</li>
+<li>Example:</li>
+<li>SMULL R0, R1, R2, R3  ; R0(Low32) = (R2<em>R3)(Low32), R1(High32) = (R2</em>R3)(High32)</li>
+<li>
+<p>SMULLS R0, R1, R2, R3
+{% endmessage %}</p>
+</li>
+<li>
+<p>SMLAL(64位有符号数乘加法, Signed Mulliply ADD Long)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: SMLAL{条件}{S} 目的寄存器Low, 目的寄存器High, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2 + 目的寄存器][63...0]，影响CPSR中标志位</li>
+<li>操作数1: 32位寄存器</li>
+<li>操作数2: 32位寄存器</li>
+<li>Example:</li>
+<li>SMLAL R0, R1, R2, R3  ; R0(Low32) = (R2<em>R3)(Low32) + R0(Low32), R1(High32) = (R2</em>R3)(High32) + R1(High32)</li>
+<li>
+<p>SMLALS R0, R1, R2, R3
+{% endmessage %}</p>
+</li>
+<li>
+<p>UMULL(64位无符号数乘法, Unsigned Mulliply Long)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: UMULL{条件}{S} 目的寄存器Low, 目的寄存器High, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2][63...0]，影响CPSR中标志位</li>
+<li>操作数1: 32位寄存器</li>
+<li>操作数2: 32位寄存器</li>
+<li>Example:</li>
+<li>UMULL R0, R1, R2, R3  ; R0(Low32) = (R2<em>R3)(Low32), R1(High32) = (R2</em>R3)(High32)</li>
+<li>
+<p>UMULLS R0, R1, R2, R3
+{% endmessage %}</p>
+</li>
+<li>
+<p>UMLAL(64位无符号数乘加法, Unsigned Mulliply ADD Long)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: UMLAL{条件}{S} 目的寄存器Low, 目的寄存器High, 操作数1, 操作数2</li>
+<li>指令说明: 目的寄存器 = [操作数1 * 操作数2 + 目的寄存器][63...0]，影响CPSR中标志位</li>
+<li>操作数1: 32位寄存器</li>
+<li>操作数2: 32位寄存器</li>
+<li>Example:</li>
+<li>UMLAL R0, R1, R2, R3  ; R0(Low32) = (R2<em>R3)(Low32) + R0(Low32), R1(High32) = (R2</em>R3)(High32) + R1(High32)</li>
+<li>UMLALS R0, R1, R2, R3
+{% endmessage %}</li>
+</ul>
+<h3 id="loadstore_2">Load/Store指令</h3>
+<blockquote>
+<p>ARM中用于在寄存器和存储器之间传送数据的指令</p>
+</blockquote>
+<h4 id="6_2">单寄存器存取指令(6条)</h4>
+<ul>
+<li>LDR(字数据加载指令)
+{% message color:info size:default%}</li>
+<li>指令格式: LDR{条件} 目的寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: 目的寄存器 = Mem[Address]——32位字数据</li>
+<li>Example:</li>
+<li>LDR R0, [R1]  ;  R0 = Mem[R1]</li>
+<li>LDR R0, [R1, R2]    ; R0 = Mem[R1+R2]</li>
+<li>LDR R0, [R1, #4]    ; R0 = Mem[R1+4]</li>
+<li>
+<p>LDR R0, [R1, R2]!   ; R0 = Mem[R1+R2], R1 = R1 + R2
+{% endmessage %}</p>
+</li>
+<li>
+<p>LDRB(字节数据加载指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: LDR{条件}B 目的寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: 目的寄存器[7...0] = Mem[Address]——8位字节数据, 目的寄存器[31...8] = 0</li>
+<li>Example:</li>
+<li>LDRB R0, [R1]       ;  R0 = Mem[R1]</li>
+<li>
+<p>LDRB R0, [R1, #8]   ; R0 = Mem[R1+8]
+{% endmessage %}</p>
+</li>
+<li>
+<p>LDRH(半字数据加载指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: LDR{条件}H 目的寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: 目的寄存器[15...0] = Mem[Address]——16位字节数据, 目的寄存器[31...16] = 0</li>
+<li>Example:</li>
+<li>LDRB R0, [R1]       ;  R0 = Mem[R1]</li>
+<li>
+<p>LDRB R0, [R1, #8]   ; R0 = Mem[R1+8]
+{% endmessage %}</p>
+</li>
+<li>
+<p>STR(字数据存储指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: STR{条件} 源寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: Mem[Address] = 源寄存器——32位字数据</li>
+<li>Example:</li>
+<li>STR R0, [R1], #8    ; Mem[R1] = R0, R1 = R1 + 8</li>
+<li>STR R0, [R1, #4]    ; Mem[R1+4] = R0</li>
+<li>
+<p>STR R0, [R1, R2]!   ; Mem[R1+R2] = R0, R1 = R1 + R2
+{% endmessage %}</p>
+</li>
+<li>
+<p>STRB(字节数据存储指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: STR{条件}B 源寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: Mem[Address] = 源寄存器Low8——8位字节数据</li>
+<li>Example:</li>
+<li>STRB R0, [R1]        ; Mem[R1] = R0(Low8)</li>
+<li>
+<p>STRB R0, [R1, #8]    ; Mem[R1+8] = R0(Low8)
+{% endmessage %}</p>
+</li>
+<li>
+<p>STRH(半字数据存储指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: STR{条件}H 源寄存器, &lt;存储器地址&gt;</li>
+<li>指令说明: Mem[Address] = 源寄存器Low16——16位半字数据</li>
+<li>Example:</li>
+<li>STRH R0, [R1]        ; Mem[R1] = R0(Low16)</li>
+<li>STRH R0, [R1, #8]    ; Mem[R1+8] = R0(Low16)
+{% endmessage %}
+{% message color:info size:default%}
+Check Point: Load/Store指令的基址寻址于变址变址
+{% endmessage %}</li>
+</ul>
+<h4 id="2_3">多寄存器存取指令(2条)</h4>
+<p>ARM中支持的批量数据加载/存储指令可以一次在一片连续的存储器单元和多个寄存器之间传送数据，通常用于堆栈操作
++ STM(批量数据存储指令)
+{% message color:info size:default%}
++ 指令格式: STM{条件}{类型} 基址寄存器{!}, 寄存器列表{^}
++ 指令说明: 多个寄存器中字数据传送到基址寄存器指向的连续存储器单元中
++ 类型——地址增长顺序: IA(Increment After), IB(Increment Before), DA(Decrement After), DB(Decrement Before)
+  <img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230035.png" alt="不同地址增长顺序的寻址模式" width="50%"/></p>
+<ul>
+<li>Example:</li>
+<li>
+<p>STMFD R0!, {r1-r4}
+{% endmessage %}</p>
+</li>
+<li>
+<p>LDM(批量数据加载指令)
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: LDM{条件}{类型} 基址寄存器{!}, 寄存器列表{^}</li>
+<li>指令说明: 基址寄存器指向的连续存储器单元中字数据传送到多个寄存器中</li>
+<li>Example:</li>
+<li>LDMFD R0!, {r1-r4}     <br />
+{% endmessage %}</li>
+</ul>
+<h4 id="2_4">存储器和寄存器交换指令(2条)</h4>
+<blockquote>
+<p>主要用于实现信号量操作，信号量用于进程的同步与互斥</p>
+</blockquote>
+<ul>
+<li>SWP
+{% message color:info size:default%}</li>
+<li>指令格式: SWP{条件} 目的寄存器, 源寄存器1, [源寄存器2]</li>
+<li>指令说明: 目的寄存器=Mem[源寄存器2]，Mem[源寄存器2] = 源寄存器1 </li>
+<li>Example: 寄存器和存储器交换</li>
+<li>SWP R0, R0, [R2] 
+{% endmessage %}</li>
+</ul>
+<h3 id="_21">跳转指令</h3>
+<h4 id="arm_8">ARM程序跳转概述</h4>
+<ul>
+<li>PC寄存器中写入目标地址值</li>
+<li>实现4GB地址空间的任意跳转</li>
+<li>跳转指令实现</li>
+<li>向前或向后32MB地址空间跳转</li>
+</ul>
+<h4 id="arm_9">ARM程序跳转</h4>
+<ul>
+<li>B(Branch) 分支跳转指令，根据条件进行分支跳转</li>
+<li>B{条件} 目标地址</li>
+<li>不加条件时，表示无条件跳转指令</li>
+<li>BL(Branch with Link) 分支链接指令</li>
+<li>BL{条件} 目标地址</li>
+<li>将下一条指令的地址拷贝到链接寄存器(R14/LR)中，然后跳转到指定的地址运行程序</li>
+<li>BX(Branch and eXchange) 分支交换指令</li>
+<li>BX{条件} 目标地址</li>
+<li>带状态切换的跳转指令，具体状态有目标寄存器最低位决定</li>
+<li>BLX(Branch with Link and eXchange) 分支链接交换指令</li>
+<li>BLX 目标地址</li>
+<li>带状态切换的分支链接指令</li>
+</ul>
+<h4 id="_22">程序状态寄存器访问指令</h4>
+<p>用于在程序状态寄存器(CPSR/SPSR)和通用寄存器之间传送数据
++ MRS
+{% message color:info size:default%}
++ 指令格式: MRS{条件} 通用寄存器, 程序状态寄存器
++ 指令说明: 状态寄存器的内容读取到通用寄存器, Rn$\rightarrow$ CPSR/SPSR
++ Example: 
+  + 临时保存程序状态寄存器的内容
+  + 异常处理或进程切换时，先读再存程序状态寄存器中的值
+{% endmessage %}</p>
+<ul>
+<li>MSR
+{% message color:info size:default%}</li>
+<li>指令格式: MSR{条件} 程序状态寄存器_&lt;域&gt;, 操作数</li>
+<li>指令说明: 将操作数的内容传送到状态寄存器的特定域中,操作数可以为通用寄存器或立即数</li>
+<li>域：对32位程序状态字寄存器的划分，分为4个8位域</li>
+<li>c位[7:0]为控制位域, 表示为c</li>
+<li>x位[15:8]为扩展位域, 表示为x</li>
+<li>s位[23:16]为状态位域, 表示为s</li>
+<li>f位[31:24]为条件标志位域, 表示为f</li>
+<li>Example: </li>
+<li>MSR CPSR, R0</li>
+<li>MSR CPSR_c, R0
+{% endmessage %}</li>
+</ul>
+<h4 id="_23">异常产生指令</h4>
+<ul>
+<li>SWI 软件中断指令</li>
+<li>BKPT 断点中断指令</li>
+</ul>
+<h4 id="_24">协处理器指令</h4>
+<h2 id="arm_10">第六讲 ARM汇编</h2>
+<p>ARM汇编语言源程序一般由ARM指令、伪操作(包括伪指令)和宏指令组成；其中伪操作(包括伪指令)是由汇编器在对源程序汇编期间由汇编程序处理的。</p>
+<h3 id="_25">伪操作</h3>
+<h4 id="_26">符号定义伪操作</h4>
+<p>用于定义ARM汇编程序中的变量，对变量赋值和寄存器重命名
++ 定义全局变量(GBLA(GloBaL Arithmetic), GBLL(GloBaL Logical), GBLS(GloBaL String))
+{% message color:info size:default%}
++ 指令格式: GBLA(GBLL/GBLS) 全局变量名
++ 指令说明: GBLA算术, GBLL逻辑, GBLS字符串
++ 定义ARM程序中全局变量并初始化为0
++ Example: 
+  + GBLA Test1
+  + Test1 SETA 0xaa
+  + GBLL Test2
+  + Test2 SETL {TRUE}
+  + GBLS Test3
+  + Test3 SETS "Testing"
+{% endmessage %}</p>
+<ul>
+<li>定义局部变量(LCLA(LoCaL Arithmetic), LCLL(LoCaL Logical), LCLS(LoCaL String))
+{% message color:info size:default%}</li>
+<li>指令格式: LCLA(LCLL/LCLS) 局部变量名</li>
+<li>指令说明: LCLA算术, LCLL逻辑, LCLS字符串</li>
+<li>定义ARM程序中局部变量并初始化为0</li>
+<li>Example: </li>
+<li>LCLA Test1</li>
+<li>Test1 SETA 0xaa</li>
+<li>LCLL Test2</li>
+<li>Test2 SETL {TRUE}</li>
+<li>LCLS Test3</li>
+<li>
+<p>Test3 SETS "Testing"
+{% endmessage %}</p>
+</li>
+<li>
+<p>对变量进行赋值(SETA(SET Arithmetic), SETL(SET Logical), SETS(SET String))
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: 变量名 SETA(SETL/SETS) 表达式</li>
+<li>指令说明: 为<strong>已定义过的</strong>全局变量或局部变量进行赋值</li>
+<li>Example: </li>
+<li>LCLA Test1</li>
+<li>Test1 SETA 0xaa</li>
+<li>LCLL Test2</li>
+<li>
+<p>Test2 SETL {TRUE}
+{% endmessage %}</p>
+</li>
+<li>
+<p>命名通用寄存器列表(RLIST(Register List))
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: 名称 RLIST {寄存器列表}</li>
+<li>指令说明: 用于对一个通用寄存器列表定义名称，列表中寄存器访问次序为寄存器的编号由低到高</li>
+<li>Example: </li>
+<li>Reglist RLIST {R0-R5, R8, R10}
+{% endmessage %}</li>
+</ul>
+<h4 id="_27">数据定义伪操作</h4>
+<h4 id="_28">汇编控制伪操作</h4>
+<blockquote>
+<p>控制汇编程序的执行流程
++ IF...ELSE...ENDIF
++ WHILE...WEND
++ MACRO...MEND(Macro)
+  + 宏定义伪操作，标识一个宏的开始与结束
++ MEXIT 
+  + 从宏定义中跳转出去</p>
+</blockquote>
+<h4 id="_29">信息报告伪操作</h4>
+<ul>
+<li>ASSERT
+{% message color:info size:default%}</li>
+<li>指令格式: ASSERT Logical_Expression</li>
+<li>指令说明: 断言表达式成立否则报错，并且该伪操作在第二次扫描汇编程序中判断</li>
+<li>Example: </li>
+<li>
+<p>ASSERT Top&lt;&gt;Temp
+{% endmessage %}</p>
+</li>
+<li>
+<p>INFO
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: INFO numeric_expr, string_expr</li>
+<li>指令说明: 该伪操作在第一次或第二次扫描时报告诊断信息</li>
+<li>参数说明: numeric_expr = 0 第一遍扫描时报告，否则第二遍时；string_expr: 诊断信息</li>
+<li>Example: </li>
+<li>INFO 0, "Version 0.1"
+{% endmessage %}</li>
+</ul>
+<h4 id="_30">其他伪操作</h4>
+<ul>
+<li>AREA
+{% message color:info size:default%}</li>
+<li>指令格式: AREA 段名, 属性1, 属性2, ...</li>
+<li>指令说明: CODE属性(代码段)，DATA属性(数据段)，READONLY属性，READWRITE属性</li>
+<li>Example: </li>
+<li>AREA Init，CODE，READONLY</li>
+<li>...</li>
+<li>
+<p>END
+{% endmessage %}</p>
+</li>
+<li>
+<p>CODE
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: CODE16/CODE32</li>
+<li>
+<p>指令说明: 通过CODE16伪操作通知编译器其后指令为16位的Thumb指令；CODE32通知编译器其后指令为32位的ARM指令；以此进行ARM的状态切换
+{% endmessage %}</p>
+</li>
+<li>
+<p>ENTRY
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: ENTRY</li>
+<li>指令说明: ENTRY伪操作用于指定汇编程序入口点; 在一个完整的汇编程序中至少要有一个ENTRY</li>
+<li>Example: </li>
+<li>AREA Init，CODE，READONLY</li>
+<li>
+<p>ENTRY
+{% endmessage %}</p>
+</li>
+<li>
+<p>END
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: END</li>
+<li>指令说明: END伪操作用于通知编译器已经到了源程序的结尾</li>
+<li>Example: </li>
+<li>AREA Init，CODE，READONLY</li>
+<li>...</li>
+<li>
+<p>END
+{% endmessage %}</p>
+</li>
+<li>
+<p>EQU
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: 名称 EQU 表达式 {，类型}</li>
+<li>指令说明: EQU伪操作用于为程序中的标号、数字常量和寄存器的值等定义一个字符名称；可以用'*'代替</li>
+<li>Example: </li>
+<li>Test EQU 50</li>
+<li>
+<p>Addr * 0x55，CODE32 ; 定义Addr的值为0x55, 且该处为32位的ARM指令(类型) 
+{% endmessage %}</p>
+</li>
+<li>
+<p>EXPORT/GLOBAL
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: EXPORT 标号</li>
+<li>指令说明: 用于在程序中声明一个全局的标号</li>
+<li>Example: </li>
+</ul>
+<pre><code class="language-arm">AREA Init CODE，READONLY
+    EXPORT Test     ; 声明一个可全局引用的标号Test
+    ...
+    END
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>IMPORT
+{% message color:info size:default%}</li>
+<li>指令格式: IMPORT 标号</li>
+<li>指令说明: 用于通知编译器要使用的标号在其他的源文件中定义，但要在当前源文件中引用; 如果没有引用，该标号实际上会被加入到当前源文件中</li>
+<li>Example: </li>
+</ul>
+<pre><code class="language-arm">AREA Init CODE，READONLY
+    IMPORT Main    ; 引用一个全局的标号Main
+    ...
+    END
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>EXTERN
+{% message color:info size:default%}</li>
+<li>指令格式: EXTERN 标号</li>
+<li>
+<p>指令说明: 用于通知编译器要使用的标号在其他的源文件中定义，但要在当前源文件中引用; 如果没有引用，该标号实际上不会被加入到当前源文件中
+{% endmessage %}</p>
+</li>
+<li>
+<p>GET
+{% message color:info size:default%}</p>
+</li>
+<li>指令格式: GET 文件名</li>
+<li>指令说明: GET伪操作用于将一个源文件包含到当前的源文件中，并将被包含的源文件在当前位置进行汇编处</li>
+<li>可以使用INCLUDE代替GET
+{% endmessage %}</li>
+</ul>
+<h3 id="arm_11">ARM语言伪指令</h3>
+<p>伪指令不是真正的ARM指令,在汇编过程中会被替换成对应的ARM指令或指令序列
++ ADR(AdDRess)
+{% message color:info size:default%}
++ 指令格式: ADR {cond} register, 标号
++ 指令说明: 将基于PC的地址值(程序标号)或基于寄存器的地址值加载到寄存器中
++ Example: </p>
+<pre><code class="language-arm">start MOV R0, #0
+      ADR R1, start
+   =&gt; SUB R1, pc, #0xC
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>ADRL(AdDRess Large)
+{% message color:info size:default%}</li>
+<li>指令格式: ADRL {cond} register, 标号</li>
+<li>指令说明: 将基于PC的地址值(程序标号)或基于寄存器的地址值加载到寄存器中,可被替换成两条合适的指令，所以加载的地址范围更大</li>
+<li>Example: </li>
+</ul>
+<pre><code class="language-arm">start MOV R0, #0
+      ADRL R1, start + 60000
+   =&gt; ADD R1, pc, 0xE800
+   =&gt; ADD R1, R1, 0x254
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>LDR(Load Register)
+{% message color:info size:default%}</li>
+<li>指令格式: LDR {cond} register, = expr 或 label-expr</li>
+<li>指令说明: 可将任意一个32位常数或地址值加载到寄存器中</li>
+<li>Example: </li>
+</ul>
+<pre><code class="language-arm">  LDR R1, =0xFF
+  =&gt; MOV R1, 0xFF
+  LDR R1, =0xFFF
+  =&gt; LDR R1, [PC, OFFSET_TO_LPOOL]
+</code></pre>
+<p>{% endmessage %}</p>
+<ul>
+<li>NOP(NO Operation)
+{% message color:info size:default%}</li>
+<li>指令格式: NOP</li>
+<li>指令说明: 汇编时会被替换成一条无用指令, 不影响CPSR中的条件标志位</li>
+<li>Example: </li>
+</ul>
+<pre><code class="language-arm">  NOP
+  =&gt; MOV R0, R0
+</code></pre>
+<p>{% endmessage %}</p>
+<h2 id="armc">第七讲 ARM下的C编程</h2>
+<h3 id="c">了解C运行时库</h3>
+<p>C运行时库(C Runtime Library)用于在C程序运行时提供支持的函数和例程集合，包含C语言所需的基本功能和支持：</p>
+<ul>
+<li>ARM的C编译器支持ANSI C运行时库</li>
+<li>ARM C运行时库以二进制形式提供</li>
+<li>用户可以建立自己的运行时库</li>
+</ul>
+<h3 id="_31">宏和函数的区别</h3>
+<p>宏：在C程序中定义的命名代码段。</p>
+<ol>
+<li>编译器会将相关代码放到宏名出现的每一个地方，宏的代码在任何出现宏名的地方<u>都会编译一次</u>；使用宏时不需要保存/恢复上下文，也不必返回</li>
+<li>在编译器预处理阶段会被<u>直接展开到代码</u>中，编译时用宏内容替换宏调用位置，可能导致代码膨胀</li>
+<li>代码<u>简单</u>用宏</li>
+</ol>
+<p>函数：
+1. 函数的代码<u>只需要编译一次</u>
+2. 在<u>编译时定义，但实际执行发生在运行时</u>，会有函数调用开销
+3. 代码<u>复杂</u>用函数</p>
+<p>三、什么是内嵌汇编</p>
+<p>标识符：_ _asm：用于告诉编译器后面是汇编代码</p>
+<p>```c 内嵌汇编
+void enable_IRQ(void)
+{
+  int temp;
+  __asm
+  {
+    MRS tmp, CPSR
+    BIC tmp, tmp, #0x80
+    MSR CPSR_c, tmp
+  }
+}</p>
+<pre><code>
+### _irq、volatile关键字的作用
+
+**_irq**：使用该关键字声明的&lt;u&gt;函数&lt;/u&gt;可以被用作异常中断的中断处理程序，该函数通过将lr-4的值赋予PC寄存器，并将 SPSR的值赋予CPSR实现函数返回
+
+**volatile**：用于声明&lt;u&gt;变量&lt;/u&gt;，告诉编译器该变量可能在程序之外修改；编译时不能优化对volatile变量的操作；不能对volatile变量使用缓冲技术
+
+### 汇编和 C 的混合编程
+
+**参数传递规则**：
+
++ 参数个数可变的子程序参数传递规则：
+  1. 参数不超过4个时，使用R0～R3来传递；
+  2. 参数超过4个时，可以使用数据栈来传递
++ 参数个数固定的子程序参数传递规则:
+  1. 第一个整数参数，通过R0～R3来传递
+  2. 其他参数通过数据栈来传递
+  3. 有关浮点运算，需特别处理
++ 子程序结果返回规则:
+  1. 结果为一个32位整数时，可以通过寄存器R0返回
+  2. 结果为一个64位整数时，可以通过寄存器R0和R1返回， 依次类推
+
+### ARM 异常响应过程
+
+{% message color:info title:ARM异常处理 size:default%}
+1. 当异常中断发生时, 系统执行完当前指令后，跳转到相应的异常中断处理 程序处执行
+2. 执行完成后，程序返回到发生中断的指令的下一条指 令处执行
+3. 进入异常中断处理程序时要保存现场，返回时要恢复 现场
+{% endmessage %}
+
+{% message color:info title:异常向量表 size:default%}
++ 当异常发生时，处理器会把PC设置为一个特定的存储器地址
++ 这一地址放在被称为向量表(vector table)的特定地址范围内
++ 异常向量表通常放在存储地址的低端
+{% endmessage %}
+
+## 第八讲 RISC-V&amp;华为鲲鹏
+### 指令集架构(ISA)和国内ISA生态
++ 指令：是指处理器进行操作的最小单元（如算术/逻辑运算）；
++ 指令集：顾名思义是指一组指令的集合；
++ 指令集架构：又称为“处理器架构”，不仅是指令的集合，还包括编程需要的硬件信息，如支持的数据类型、存储器、寄存器状态、寻址模式和寄存器模型等；
+    + 指令集架构（ISA, Instruction Set Architecture）才是区分不同CPU的标准；
++ 微架构：处理器的具体硬件实现方案称为微架构；
++ 常见指令集架构：**x86(CISC)**, SPARC, **MIPS**, Power(国产), Alpha(国产), ARC, **ARM(RISC)**, Intel
+
+### RISV-V的主要特征
+RISC-V，是一种基于“精简指令集（RISC）”原则的指令集架构，它具有开源、重新设计(后发优势)、简单哲学、模块化指令集、指令集可扩展的特点。
+### 华为鲲鹏
++ 鲲鹏 920 使用的指令集架构是 ARM v8 64 位
++ 鲲鹏 920 生产使用的制程是 7nm
++ 相比于上一代的鲲鹏 916，鲲鹏 920 处理器的计算核数提升 1 倍，最多支持 64 核
+
+## 第九讲 最小系统设计
+### 嵌入式系统最小系统
+CPU能够运行所需的模块有(最小系统)：电源、时钟、复位、内存、调试接口（JTAG）
+### DC-DC 转换器的常见形式
+线性稳压器、开关稳压器和充电泵
+### 晶体和晶振
+时钟一般由晶体振荡器提供，而晶体和晶振是构成晶体振荡器的两种方式:
+
++ 晶体(无源)
+    + 封装内部只含有晶体, 没有内部电源
+    + 驱动电路由设计者提供  
++ 晶振(有源)
+    + 封装中包含了完整的晶体振荡器电路
+    + 需要电源
+
+### 复位的基本功能
++ 在系统上电时提供复位信号
++ 保证能够进行手动复位
+
+### SRAM,DRAM,SDRAM和Flash
++ SRAM(静态RAM)
+    + 数据存入静态RAM后，只要**电源维持不变**，其中存储的数据就能够一直维持不变 , 不需要刷新操作
+    + **读写速度快**
+    + 由触发器构成基本单元，**接口简单**
+    + **存储单元结构复杂，集成度较低**
+    + 常常用作**高速缓冲存储器**[读写速度快]
+
+{% message color:info size:default%}
+处理器内部集成存储器多选择SRAM
+{% endmessage %}
+
++ DRAM(动态RAM)
+    + 依靠**电容存储**信息，需要**不断刷新**
+    + **读写速度慢**
+    + **集成度高**，成本低
+    + 地址引脚少，地址总线采用多路技术，**接口复杂**
+
+{% message color:info size:default%}
+多用于外部存储器扩展(外存)[读写速度慢]
+{% endmessage %}
+
++ SDRAM(同步动态RAM)
+    + SDRAM因为要同CPU和芯片组共享时钟，所以芯片组可以主动的**在每个时钟的上升沿发给引脚控制命令**
+    + 动态RAM加上同步特性[在每个时钟的上升沿发给引脚控制命令]
+
++ Nor Flash
+    + **芯片内执行**
+    + **读速度快**（相比Nand Flash）
+    + 写入与擦除速度很低
+    + **擦除按块进行**，写入前必须先擦除
+    + 带有SRAM接口，有足够的地址引脚来寻址，可以很容易地存取其内部的每一个字节
+    + **常用来存储代码**
+
++ Nand Flash
+    + NAND读和写操作**按512字节的块**进行
+    + **写入与擦除速度比Nor Flash快**
+    + **擦除按块进行**，写入前必须先擦除
+    + NAND的擦除单元更小，相应的擦除电路更少
+    + NAND器件使用复杂的I/O口来**串行地存取数据**
+    + **常用来存储数据**
+
+### 存储器映射
+存储器**映射到物理地址**, 通过将存储器按照物理地址划分为不同模块, 进行RAM, DRAM, SDRAM, FLASH等存储设计.
+
+## 第十讲 外部设备及通信接口
+### 常用外部接口
+I/O（Input/Output）接口是一个微控制器必须具备的最基本的外设功能.
+
++ 每个I/O口一般都对应了两个寄存器:
+    + 数据寄存器：数据寄存器的各位都直接引到芯片外部
+    + 控制寄存器：控制数据寄存器中每位的信号流通方向和方式
++ GPIO
+    General-Purpose I/O ports，也就是通用I/O口，是I/O的最基本形式
++ LCD
+    液晶显示器(Liquid Crystal Display): 晶显示器是一种被动光源的显示器，自身不能发光，只能借助外界光源, 具有省电、体积小、低成本、低功率等特点，被广泛应用于嵌入式系统中
+    液晶: 以液态形式存在的晶体
+    + 有电流流过，液晶分子会以电流的方向进行排列；没有电流时，平行排列
+    + 基本原理: 通过给不同的液晶单元供电，控制其光线的通过与否而达到显示的目的
+
++ 触摸屏
+    触摸屏由触摸检测部件和触摸屏控制器组成, 按照触摸屏的工作原理和传输信息的介质主要分为: 电阻式, 电容感应式, 红外线式, 表面声波式四种
+
++ ADC
+    模/数转换器就是把电模拟量转换成数字量的电路
++ DAC
+    数/模转换器就是把数字量转换成模拟量的电路
+
+## 第十一讲 嵌入式操作系统
+### 嵌入式操作系统
+相对于通用操作系统，嵌入式操作系统更为精巧, 但并不意味着可以通过裁剪通用操作系统来实现, 它有自身的特点:
++ 实时性
++ 可移植性
++ 可配置、可裁剪性
++ 可靠性
++ 应用编程接口
+
+{% message color:info %}
+每个操作系统提供的系统调用的功能和种类都不同
+{% endmessage %}
+
+### 嵌入式操作系统的任务
+主要任务是尽可能地**屏蔽底层硬件的差异**，对上层应用软件和底层硬件**提供标准化服务**
+
+### 嵌入式操作系统的功能
+内核是嵌入式操作系统的基础, 具有以下功能:
++ 任务管理
++ 中断管理
++ 通信, 同步和互斥机制
++ 内存管理
++ I/O管理
+
+### 嵌入式操作系统的实时性
+实时性是实时内核最重要的特征之一
+
++ 实时系统的正确性不仅依赖于系统计算的逻辑结果(**计算逻辑**)，还依赖于产生这些结果的时间(**计算时间**)
++ 相关概念
+    + 确定性
+        + 实时性是指内核应该**尽可能快的响应外部事件**
+        + 确定性是指对事件**响应的最坏时间是可预知的**
+    + 响应性
+        + 确定性关心系统在识别外部事件之前的延迟(**响应启动延迟**)
+        + 响应性关心的是在识别外部事件后，系统要花多长时间来服务该事件(**响应时间**)
+    + 响应时间
+        确定性和响应性结合在一起构成事件响应时间。
+    + 中断响应时间 = 最长关中断时间 + 保护CPU内部寄存器的时间 + 进入中断服务函数的执行时间 + 开始执行中断服务程序(ISR)的第一条指令时间
+    + 任务响应时间 = 中断响应时间+中断服务时间
+    + 对于强实时内核，响应时间应该在 $\mu s$ 级
+
+### 多任务程序设计结构
+#### 前后台结构
+{% message color:info %}
+后台循环, 前台中断
+{% endmessage %}
+
++ 后台行为: 应用程序是一个无限的循环，循环中调用相应的函数完成相应的操作，这部分可以看成后台行为
++ 前台行为: 中断服务程序处理异步事件，这部分可以看成前台行为
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230117.png&quot; alt=&quot;前后台结构&quot; width=&quot;50%&quot;/&gt;
+
+
+### 多任务系统的相关概念 
+嵌入式实时系统中，多采用多任务程序设计的方法，其特点有：
+
++ 单个任务规模较小，容易编码和调试
++ 任务间独立性高、耦合性小，便于扩充功能
++ 系统实时性强，以保证紧急事件得到优先处理
+
+#### 任务的概念
+进程是**资源分配的最小单位**, 线程是进程内部一个相对独立的控制流，是**调度执行的最小单位**
+【基本概念】
+
++ 大多数实时内核都把整个应用当作一个没有定义的进程，应用则被划分为多个任务来处理
++ 整个内核是一个单进程/多线程模型，简单称为多任务模型
+
+【概念阐述】
+多任务系统是一个单进程或多进程的系统内核, 其中多个进程是由内核将整个应用划分成多个任务进行处理而建立的.
+【任务的要素】
+
++ 代码: 一段可执行的程序
++ 初始数据: 程序执行所需的相关数据
++ 堆栈: 保存局部变量和现场的存储区
++ 任务控制块: 包含任务相关信息的数据结构以及任务执行过程中所需要的所有信息
+  &lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230135.png&quot; alt=&quot;多任务模型结构&quot; width=&quot;50%&quot;/&gt;
+
+【任务的特点】
+  动态性(就绪, 运行或等待), 并行性(同时存在多个任务, 宏观上并行), 异步独立性(各任务相互独立,运行速度不可预知)
+
+#### 任务的基本状态及转换 
+- 运行状态(running) 
+    该任务已获得运行所必需的资源，它的程序正在处理机上执行
+- 阻塞状态(wait)
+    任务正等待着某一事件的发生而暂时停止执行; 这时，即使给它CPU控制权，它也无法执行, 则称该任务处于阻塞态
+- 就绪状态(ready)
+    任务已获得除CPU之外的运行所必需的资源，一旦得到CPU控制权，立即可以运行
+    &lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230151.png&quot; alt=&quot;任务的状态转换&quot; width=&quot;50%&quot;/&gt;
+1. 就绪$\longrightarrow$运行
+    + 调度程序选择一个新的进程运行(进程被调度)
+2. 运行$\longrightarrow$就绪
+    + 运行进程用完了时间片(时间片用完)
+    + 运行进程被中断，因为一高优先级进程处于就绪状态(被高优先级进程抢占)
+3. 运行$\longrightarrow$等待
+    进程必须等待某个事件：
+    + OS尚未完成服务
+    + 对一资源的访问尚不能进行
+    + 初始化I/O 且必须等待结果
+4. 等待$\longrightarrow$就绪
+    所等待的事件已经发生
+
+#### 任务的切换 
++ 保存当前任务的上下文
+    当多任务内核决定运行另外的任务时，任务切换要求**保存正在运行任务的当前状态**，即**CPU寄存器中的全部内容**被保存到任务的**当前状态保存区(任务自己的堆栈区)**
++ 恢复需要运行任务的上下文
+    原任务状态入栈工作完成后，就把下一个将要运行任务的当前状态从**该任务的堆栈中**重新**装入CPU寄存器**，并开始下一个任务的运行
+
+#### 任务的调度
+【调度的功能】
+调度只是一个函数调用，可在内核各个部分调用
+
++ 用来确定多任务环境下任务执行的顺序(任务执行顺序)
++ 用来确定任务获得CPU资源后能够执行的时间(任务执行时间)[基于时间片的调度]
+
+
+【调度点与调度时机】
+调用调度程序的具体位置称为调度点：
+
++ 中断服务程序的结束位置
++ 任务因等待资源而进入等待状态
+
+#### 调度策略
++ 实时任务就绪的原因
+    + **中断处理过程中**使实时任务就绪: 存在任务请求中断, 中断服务程序会使得中断请求任务就绪【中断处理程序】
+    + 当前运行任务**调用操作系统功能**，使实时任务就绪【系统调用】
++ 非抢占式调度
+    + 低优先级任务运行过程中，一个中断到达;
+    + 若中断被允许，CPU进入中断服务程序;
+    + 中断处理过程使一个高优先级任务就绪;
+    + 中断完成后，CPU归还给原先被中断的低优先级任务;
+    + 低优先级任务继续运行;
+    + 低优先级任务完成或因其它原因被阻塞而释放CPU，内核进行任务调度，切换到就绪的高优先级任务;【调度点】
+    + 高优先级任务运行
+    &lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230216.png&quot; alt=&quot;非抢占式调度&quot; width=&quot;50%&quot;/&gt;
+    + 特点
+        + 任务运行空间是封闭的，几乎**不需要使用信号量保护共享数据**
+        + 内核的**任务级响应时间是不确定的**，完全取决于当前任务何时释放CPU
+
++ 抢占式调度
+    + 低优先级任务运行过程中，一个中断到达;
+    + 若中断被允许，CPU进入中断服务程序;
+    + 中断处理过程使一个高优先级任务就绪;
+    + 中断完成后，内核进行任务调度，让刚就绪的高优先级任务获得CPU;【调度点】
+    + 高优先级任务运行;
+    + 高优先级任务完成或因其它原因被阻塞而释放CPU，内核进行任务调度;【调度点】
+    + 低优先级任务获得CPU，从被中断的代码处继续运行
+    &lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230232.png&quot; alt=&quot;抢占式调度&quot; width=&quot;50%&quot;/&gt;
+    + 特点
+        + 最高优先级的任务一旦就绪，总能得到CPU的控制权
+        + **任务运行空间不再是封闭的**，任务不可使用不可重入型函数
+        + 需要**对共享数据进行必要的保护**
+        + 实时操作系统大多**基于抢占式内核**
+
+### 可重入型函数的理解
++ 可重入型函数
+    + 该函数可以被一个以上的任务调用，而不必担心数据被破坏[基本特点]
+    + 可重入型函数任何时候都可以被中断，一段时间以后又可以运行，而相应数据不会丢失[可以随时中断或运行]
+    + 可重入型函数**只使用局部变量**，即**变量保存在CPU寄存器中或堆栈中**
+
+【注解】这使得可重入型函数在发生中断时，其数据会被中断处理程序自动保存，当中断返回后，数据从堆栈中自动恢复，因此不会丢失任何数据.
+```c 不可重入型函数
+int temp;
+void swap(int *x, int *y)
+{
+  temp = *x;
+  *x = *y;
+  *y = temp;
+}
+</code></pre>
+<p>```c 可重入型函数
+void swap(int <em>x, int </em>y)
+{
+  int temp;
+  temp = <em>x;
+  </em>x = <em>y;
+  </em>y = temp;
+}</p>
+<pre><code>
+### 对临界区的理解
+【基本概念】
+临界区，又称为代码的临界区，指处理时不可分割的代码，代码一旦开始执行，则不允许任何中断打断.
+【临界区的保护】
++ 在进入临界区之前要关中断
++ 临界区代码执行完以后要立即开中断
+
+【内核的关中断时间】
++ 关中断影响中断延迟时间
++ 内核在中断响应时间上的差异主要来自内核最大关中断时间
+
+### 对共享资源的互斥管理
++ 关中断
++ 禁止任务切换
++ 使用测试并置位指令
++ 使用信号量（提供任务间通信、同步和互斥的最优选择
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230252.png&quot; alt=&quot;互斥方法对比&quot; width=&quot;50%&quot;/&gt;
+
+### 实时内核的重要性能指标
+【时间性能指标】
++ 中断延迟时间
+    指从中断发生到系统获知中断，并开始执行中断服务程序所需要的最大滞后时间
+    + 中断延迟时间 = 最大关中断时间 + 中断嵌套的时间+ 硬件开始处理中断到开始执行ISR第一条指令之间的时间
+
+{% message color:info %}
+实时内核应尽量使内核最大关中断时间减小
+{% endmessage %}
+
+缩短关中断时间: 在临界区的一些非关键代码段开中断，增加内核代码中的可抢占点
+
++ 中断响应时间
+    中断响应时间指从中断发生到开始执行用户中断服务程序的第一条指令之间的时间
+    + 中断响应时间 = 中断延迟时间 + 保存CPU内部寄存器的时间 + 该内核的ISR进入函数的执行时间
+
++ 中断恢复时间
+    中断恢复时间指用户中断服务程序结束后回到被中断代码之前的时间。(对抢占式内核还应包括可能发生的任务切换时间)
+    + 中断恢复时间 = 恢复CPU内部寄存器的时间 + 执行中断返回指令的时间
+
++ 任务响应时间
+    任务响应时间指从任务对应的中断产生到该任务真正开始运行所花费的时间，又称调度延迟
+    + 内核调度算法是决定调度延迟的主要因素
+    + 基于优先级的抢占式调度内核中，调度延迟比较小
+
+## 第十二讲 $\mu$C/OS-II的内核结构
+### $\mu$C/OS-II 中任务的状态
+$\mu$C/OS–II支持最多64个任务，每个任务有一个特定的优先级，且优先级越高，其数值越小
+
++ 运行态(运行)
+    任何时刻只能有一个任务处于运行态
++ 就绪态(可以运行)
+    任务一旦建立，这个任务就进入就绪态，准备运行
++ 挂起态(不可运行)
+    正在运行的任务可能需要等待某一事件的发生或将自己延迟一段时间
++ 中断服务态(不属于多任务管理的范围)
+    正在运行的任务是可以被中断的，除非该任务将中断关闭; 被中断了的任务进入了中断服务态
++ 休眠态(不属于多任务管理的范围)
+    任务创建之前的状态，仅驻留在程序空间，还没有交给$\mu$C/OS-II管理
+    &lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230312.png&quot; alt=&quot;任务状态转换&quot; width=&quot;50%&quot;/&gt;
+
+【任务控制块(TCB)】
+任务控制块是管理任务的数据结构:
+
++ 任务控制块OS_TCB保存着该任务的相关参数
++ 任务堆栈指针、状态、优先级、任务表位置、任务链表指针等
++ 所有的任务控制块均在$\mu$C/OS-II初始化时生成，分别存在于两条链表中: 空闲链表和使用链表
+
+### 任务就绪表的工作机制
+#### 空闲任务列表
++ 初始态：所有任务控制块都被放置在任务控制块列表数组中
++ 系统初始化: 所有任务控制块被链接成空任务控制块的单向链表
++ 任务建立: 空任务控制块指针指向的任务控制块分配给该任务，链表中指针进行后移
+
+#### 任务队列
+一般情况下，操作系统通过任务队列的方式进行任务管理。将任务组织为就绪队列和等待队列:
+
++ 任务就绪时，把任务控制块放在就绪队列尾
++ 任务挂起时，把任务控制块放在等待队列尾
++ 从就绪任务队列选择当前运行任务
+
+【特点】任务处理时间与任务数量密切相关
+
+#### 优先级位图算法
+【任务就绪表】
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230328.png&quot; alt=&quot;任务就绪表&quot; width=&quot;50%&quot;/&gt;
+【注解】
+
+1. 优先级位图: 任务状态分为就绪态和非就绪态，对应两个状态，一比特位编码
+2. 任务优先级(0$\sim 63$)划分为组号(高三位)与组内编号(低三位)，并且高优先级对应小的优先级号，其中组号索引OSRdyTbl，用组内编号索引OSRdyTbl
+3. OSRdyTbl类似二维数组，每个元素对应就绪表每一行
+4. OSRdyGrp数组标记OSRdyTbl的每一行是否存在1，即全组任务中没有一个进入就绪态时，OSRdyGrp的相应位才为零
+
++ 掩码数组OSMapTbl[7]用于对OSRdyTbl和OSRdyGrp置位，预存数组，使用时只是一次取内存的操作
+&lt;center&gt;OSMapTbl[0]=$2^0$=0x01(0000 0001)&lt;/center&gt;
+&lt;center&gt;OSMapTbl[1]=$2^1$=0x02(0000 0010)&lt;/center&gt;
+&lt;center&gt;OSMapTbl[7]=$2^7$=0x80(1000 0000)&lt;/center&gt;
+
++ Op1: 使任务进入就绪态
+prio是任务的优先级，也是任务的识别号，则将任务放入就绪表，或使任务进入就绪态的方法：
+&lt;center&gt;OSRdyGrp |= OSMapTbl[prio&gt;&gt;3]&lt;/center&gt;
+&lt;center&gt;OSRdyTbl[prio&gt;&gt;3] |= OSMapTbl[prio &amp; 0x07]&lt;/center&gt;
+
++ Op2: 使任务脱离就绪态
+将任务就绪表OSRdyTbl[prio&gt;&gt;3]相应元素的相应位清零(掩码取反)，而且当OSRdyTbl[prio&gt;&gt;3]中的所有位都为零时，即全组任务中没有一个进入就绪态时，OSRdyGrp的相应位才为零
+&lt;center&gt;If((OSRdyTbl[prio&gt;&gt;3] &amp;= ∼OSMapTbl[prio &amp; 0x07])== 0)&lt;/center&gt;
+&lt;center&gt;OSRdyGrp &amp;= ∼OSMapTbl[prio&gt;&gt;3]&lt;/center&gt;
+
++ Op3: 根据就绪表确定最高优先级
+$$
+\min j (j=0, 1, \cdots, 7), \min i (j=0, 1, \cdots, 7)
+$$
+&lt;center&gt;$\max prio = j*8+i$&lt;/center&gt;
+
+  + **查表法优化[优先级判定表]**
+查表法具有确定的时间，增加了系统的可预测性，$\mu$C/OS中所有的系统调用时间都是确定的
+&lt;center&gt;High3 = OSUnMapTbl[OSRdyGrp]&lt;/center&gt;
+&lt;center&gt;Low3 =OSUnMapTbl[OSRdyTbl[High3]]&lt;/center&gt;
+&lt;center&gt;Prio =(Hign3&lt;&lt;3)+Low3&lt;/center&gt;
+
+【注解】
+Low3也是获取$0\sim 7$ 位中最低位的1，与组号同理，可以利用查表法获取得到Prio
+
+### $\mu$C/OS 的任务级和中断级调度
++ $\mu$C/OS-II总是选择运行进入就绪态任务中优先级最高的任务;
++ **以优先级为下标**，即可得相应任务控制块
++ $\mu$C/OS-II任务调度的执行时间为常数，与当前建立的任务数没有关系
+
+#### 任务级调度
+```c 任务级调度
+void OSSched(void)
+{
+  INT8U y;
+
+  OS_ENTER_CRITICAL();
+  if((OSLockNesting | OSIntNesting) == 0){   // 检查是否处于中断或任务调度禁止
+    y = OSUnMapTbl[OSRdyGrp];    // 优先级高 3 位
+    OSPrioHighRdy != (INT8U)(y&lt;&lt;3 + OSUnMapTbl[OSRdyTbl[y]]);  // 最高优先级
+    if(OSPrioHighRdy != OSPrioCur){  // 判定该任务是否为当前任务
+      OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];  // 优先级最高的任务控制块
+      OSCtxSwCtr++;
+      OS_TASK_SW();
+    }
+  }
+  OS_EXIT_CRITICAL();
+}
+</code></pre>
+<p>【任务切换】</p>
+<ul>
+<li>将被挂起的任务寄存器入栈</li>
+<li>将较高优先级任务的寄存器值出栈，回复到CPU寄存器中</li>
+</ul>
+<div class="justified-gallery">
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230350.png" alt="挂起任务入栈前" />
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230407.png" alt="挂起任务入栈" />
+<img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230421.png" alt="挂起任务入栈后" />
+</div>
+
+<h4 id="_32">调度器上锁机制</h4>
+<p>注解：如果需要保护一个任务不被切换，可以使用关中断，但是力度太大导致不能响应中断；$\mu$cos采用调度器上锁机制，实现了保护任务同时可以响应中断的目的.</p>
+<ul>
+<li>OSSchedlock()<ul>
+<li>该函数用于禁止任务调度直到调用给调度器开锁函数为止</li>
+</ul>
+</li>
+<li>中断可以识别，中断服务也能得到</li>
+<li>OSLockNesting跟踪该函数被调用的次数</li>
+<li>OSSchedUnlock()
+    该函数给OSLockNesting值减1，当值减为0时，执行一次调度(因为可能有更高优先级的任务就绪)</li>
+</ul>
+<p>```c OSSchedLockFunction
+void OSSchedLock(void)
+{
+  if(OSRunning == TRUE){
+    OS_ENTER_CRITICAL();
+    OSLockNesting++;
+    OS_EXIT_CRITICAL();
+  }
+}</p>
+<pre><code>
+OSLockNesting是一个全局变量，因此在进行访问时需要关中断；同时OSLockNesting记录加锁的个数
+```c OSSchedUnlockFunction
+void OSSchedUnlock(void)
+{
+  if(OSRunning == TRUE){
+    OS_ENTER_CRITICAL();
+    if(OSLockNesting &gt; 0){
+      OSLockNesting--;
+      if((OSLockNesting | OSIntNesting) == 0){
+        OS_EXIT_CRITICAL();
+        OSSched();
+      }else{
+        OS_EXIT_CRITICAL();
+      }
+    }else{
+      OS_EXIT_CRITICAL();
+    }
+  }
+}
+</code></pre>
+<p>当OSLockNesting减到0(没有处于中断)时, 再次进行一次任务调度，调度之前可能需要被调度的任务</p>
+<h4 id="_33">中断级调度</h4>
+<p>基于抢占式的中断调度，在中断返回的时候进行任务的调度，检测是否有更高优先级的任务已经就绪。</p>
+<ul>
+<li>中断结束时调用返回函数OSIntExit(), OSIntExit()将中断嵌套计数器OSIntNesting减1; </li>
+<li>当计数器减到0时，对就绪任务做判断，并返回到任务：<ul>
+<li>有更高优先级任务就绪，返回更高优先级任务</li>
+<li>否则，返回到被中断任务</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230445.png" alt="中断级调度过程" width="60%"/></p>
+<p>```c OSIntEnterFunction
+void OSIntEnter(void)
+{
+  OS_ENTER_CRITICAL();
+  OSIntNesting++;
+  OS_EXIT_CRITICAL();
+}</p>
+<pre><code>```c OSIntExitFuntion
+void OSIntExit(void)
+{
+  OS_ENTER_CRITICAL();
+  if((--OSIntNesting | OSLockNesting) == 0){
+    OSIntExitY = OSUnMapTbl[OSRdyGrp];
+    OSPrioHighRdy = (INT8U)((OSIntExitY &lt;&lt; 3) + OSUnMapTbl[OSRdyTbl[OSIntExitY]]);
+    if(OSPrioHighRdy != OSPrioCur){
+      OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy];
+      OSCtxSwCtr++;
+      OSIntCtxSw();
+    }
+  }
+  OS_EXIT_CRITICAL();
+}
+</code></pre>
+<ul>
+<li>OSIntNesting的数值标识中断嵌套的层数，是一个全局变量；</li>
+<li>中断返回时判断是否为0，当为0时意味着中断已全部返回并且调度器没有上锁时，进行一次任务调度；</li>
+<li>如果最高优先级任务不是当前任务，则进行任务切换，否则不切换；</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li>任务级调度每次都需要保护现场，并恢复现场；</li>
+<li>而中断级的调度，在进行中断时以保存过现场，因此在调度时只需恢复现场；</li>
+<li>因此任务级调度的任务切换函数OS_TASK_SW()与中断级调度的任务切换函数OSIntCtxSw()不同；</li>
+</ul>
+<p>{% message color:info%}
+OSIntNesting 与 OSLockNesting 两种嵌套方式相互独立，互不影响，保证了任务不切换但是可以响应中断
+{% endmessage %}</p>
+<h3 id="_34">时钟节拍</h3>
+<ul>
+<li>时钟节拍(时钟滴答)Tick，是一种<strong>定时器中断</strong>，可通过编程方式实现</li>
+<li>时钟节拍是一种<strong>特殊的中断</strong>，是操作系统的心脏<ul>
+<li>中断服务子程序中，首先对32位的整数OSTime加一(OSTime记录系统启动以来的时钟滴答数)</li>
+<li>对任务列表进行扫描，判断是否有延时任务已经处于就绪状态，最后进行上下文切换</li>
+</ul>
+</li>
+</ul>
+<p>```c OSTickISRFunction
+void OSTickISR(void)
+{
+  保存处理器寄存器的值;
+  调用OSIntEnter()或是将OSIntNesting+1
+  if(OSIntNesting == 1){
+    OSTCBCur -&gt; OSTCBStkPtr = SP;
+  }
+  调用OSTimeTick();    //真正的用户中断服务程序
+  清发出中断设备的中断;
+  重新允许中断(可选用);
+  调用OSIntExit();
+  恢复处理器寄存器的值;
+  执行中断返回指令;
+}</p>
+<pre><code>```c OSTimeTickFunction
+void OSTimeTick(void)
+{
+  OS_TCB *ptcb;
+  ptcb = OSTCBList;   // -- OSTCB链表指针
+  while(ptcb-&gt;OSTCBPrio != OS_IDLE_PRIO){ // 检测是否是空闲任务，空闲任务是最后的任务
+    if(ptcb -&gt; OSTCBDly != 0){  // 检测是否需要延时
+      if(--ptcb-&gt;OSTCBDly == 0){  //延时减1，检测是否延时结束
+          if(!(ptcb-&gt;OSTCBStat &amp; OS_STAT_SUSPEND)){ //任务是否被挂起，若不是则将其列入就绪表
+            OSRdyGrp |= ptcb-&gt;OSTCBBitY;
+            OSRdyTbl[ptcb-&gt;OSTCBY] |= ptcb-&gt;OSTCBBitX;
+          }else{ ptcb-&gt;OSTCBDly = 1;}
+      }
+    }
+    ptcb = ptcb -&gt; OSTCBNext;  // 指针指向下一个TCB结构
+  }
+  OSTime++;  //变量加一，记录系统启动以来的时钟滴答数
+}
+</code></pre>
+<p>【注解】时钟中断做为一种特殊的中断，需要保存上下文环境，然后进入到真正的用户中断服务程序，最后中断返回，回复上下文环境</p>
+<h2 id="mucos-ii">第十三讲 $\mu$COS-II的任务管理</h2>
+<ul>
+<li>任务管理用来实现对任务状态的直接控制和访问</li>
+<li>内核的任务管理是通过系统调用(等待、延时等)来体现的[不然会阻塞CPU, 保证能够分时进行]</li>
+</ul>
+<h3 id="_35">任务的创建</h3>
+<p>【任务创建时机】</p>
+<ul>
+<li>多任务调度OSStart()开始前[初始化创建任务]</li>
+<li>其他任务执行过程中[任务执行时又创建或删除任务]</li>
+<li>任务不能由中断服务程序建立[中断服务程序不属于多任务管理的范畴，不能参与任何的任务管理工作：不能在中断中创建任务和删除任务，检测OSIntNesting是否为0，大于0表示有中断或中断嵌套]</li>
+</ul>
+<p>【参数作用】</p>
+<ul>
+<li>task: 指向任务代码的指针</li>
+<li>pdata: 任务开始时，传递给任务的指针参数</li>
+<li>ptos: 分配给任务的堆栈栈顶指针</li>
+<li>prio: 分配给任务的优先级</li>
+</ul>
+<p>【任务创建代码分析】
+```c OSTaskCreateFunction
+INT8U OSTaskCreate(void (<em>task)(void </em>pd), void <em>pdata, OS_STK </em>ptos, INT8U prio)
+{
+  void *psp;
+  INT8U err;</p>
+<p>if(prio &gt; OS_LOWEST_PRIO){   // 参数检查
+    return (OS_PRIO_INVALID);
+  }
+  OS_ENTER_CRITICAL();
+  if(OSTCBPrioTbl[prio] == (OS_TCB <em>)0){  // 检测优先级是否被占用
+    OSTCBPrioTbl[prio] = (OS_TCB </em>)1;  // 占有该优先级并开中断
+    OS_EXIT_CRITICAL();
+    psp = (void <em>)OSTaskStkInit(task, pdata, ptos, 0);  // 初始化任务堆栈
+    err = OSTCBInit(prio, psp, (void </em>)0, 0, 0, (void *)0, 0);   // 初始化任务控制块
+    if(err == OS_NO_ERR){
+      OS_ENTER_CRITICAL();
+      OSTaskCtr++;   // 任务计数器加1
+      OS_EXIT_CRITICAL();</p>
+<pre><code>  if(OSRuning){   // 若系统已经开始运行(在某任务过程中创建)则进行任务调度
+    OSSched();
+  }
+}else{  // 若创建失败(无可用任务控制块), 将优先级释放
+  OS_ENTER_CRITICAL();
+  OSTCBPrioTbl[prio] = (OS_TCB *)0;
+  OS_EXIT_CRITICAL();
+}
+return (err);
+</code></pre>
+<p>}else{
+    OS_EXIT_CRITICAL();
+    return (OS_PRIO_EXIST);
+  }
+}</p>
+<pre><code>
+【注解】首先进行优先级占位而非直接申请任务控制块，主要是因为提前判断是否有其他任务占用此优先级，速度比初始化任务控制块更快。
+```c MainFunction
+void main()
+{
+  OSInit();
+  OSTaskCreate(Task1, (void*)&amp;Task1Data, (void*)&amp;Task1Stk[TASK_STK_SIZE], Task1prio);
+  OSTaskCreate(Task2, (void*)&amp;Task2Data, (void*)&amp;Task2Stk[TASK_STK_SIZE], Task2prio);
+  OSStart();
+}
+</code></pre>
+<p>```c OSStartFunction
+void OSStart(void)
+{
+  INT8U y, x;
+  if(OSRunning == FALSE){ // 判断是否没有启动内核
+    y = OSUnMapTbl[OSRdyGrp]; 
+    x = OSUnMapTbl[OSRdyTbl[y]];
+    OSPrioHighRdy = (INT8U)((y&lt;&lt;3)+x);  // 找到优先级最高的就绪任务
+    OSPrioCur = OSPrioHighRdy; // 设为当前运行任务优先级
+    OSTCBHighRdy = OSTCBPrioTbl[OSPrioHighRdy]; // 根据任务优先级找到任务控制块，并设置为当前任务控制块
+    OSTCBCur = OSTCBHighRdy; 
+    OSStartHighRdy(); // 让优先级最高的任务运行起来
+  }
+}</p>
+<pre><code>【任务堆栈】
+每个任务都有自己的堆栈空间，并由连续的内存空间组成；
+
++ 堆栈的分配
+  + 静态分配——保证位于程序的RW段
+    + `static OS_STK MyTaskStack[stack_size]` 局部静态变量
+    + `OS_STK MyTaskStack[stack_size]` 全局变量
+  + 动态分配——位于程序的堆中，但一直不释放
+  ```c
+  OS_STK *pstk;
+  pstk = (OS_STK*)malloc(stack_size);
+  if(pstk!=(OS_STK*)0){
+    create the task;
+  }
+  ```
+
+【注解】malloc在程序堆(不同于堆栈)中分配内存,有可能会产生内存碎片，导致分配失败; 并且分配的堆栈绝对不能位于程序的栈中。
+
+【任务删除】
+
++ 使任务返回，并处于休眠状态
++ 任务代码并不被删除，只是不再被调用
+
+```c OSTaskDelFunction
+INT8U OSTaskDel(INT8U prio)
+{
+  OS_TCB *ptcb;
+  OS_EVENT *pevent;
+
+  if(prio == OS_IDLE_PRIO){
+    return (OS_TASK_DEL_IDLE);
+  }
+  if(prio &gt;= OS_LOWEST_PRIO &amp;&amp; prio != OS_PRIO_SELF){
+    return (OS_PRIO_INVALID);
+  }
+  OS_ENTER_CRITICAL();
+  if(OSIntNesting &gt; 0){  // 不在中断中删除任务
+    OS_EXIT_CRITICAL();  
+    return (OS_TASK_DEL_ISR);
+  }
+  if(prio == OS_PRIO_SELF){   // 可以删除自己
+    prio = OSTCBCur-&gt;OSTCBPrio;
+  }
+  if((ptcb = OSTCBPrioTbl[prio]) != (OS_TCB *)0){  // 得到任务控制块
+      if((OSRdyTbl[ptcb-&gt;OSTCBY] &amp;= ~ptcb-&gt;OSTCBBitX) == 0){
+        OSRdyGrp &amp;= ~ptcb-&gt;OSTCBBitY; // 将该任务从就绪表中删除
+      }
+      if((pevent = ptcb-&gt;OSTCBEventPtr) != (OS_EVENT *)0){
+        if((pevent-&gt;OSEventTbl[ptcb-&gt;OSTCBY] &amp;= ~ptcb-&gt;OSTCBBitX) == 0){
+          pevent-&gt;OSEventGrp &amp;= ~ptcb-&gt;OSTCBBitY; // 处理与该任务有关的事件
+        }
+      }
+      ptcb-&gt;OSTCBDly = 0; // 时钟节拍延迟数清零
+      ptcb-&gt;OSTCBStat = OS_STAT_RDY; // 任务状态置为RDY
+      OSLockNesting++; // 防止调度器进行任务切换
+      OS_EXIT_CRITICAL(); // 开一次中断，缩短中断响应时间
+      OSDummy();
+      OS_ENTER_CRITICAL(); // 关中断，重新进入临界区
+      OSLockNesting--;  // 调度器开锁
+      OSTaskDelHook(ptcb); // 删除钩子函数
+      OSTaskCtr--;
+      OSTCBPrioTbl[prio] = (OS_TCB*)0;  // 控制块数组指针清零
+      if(ptcb-&gt;OSTCBPrev == (OS_TCB *)0){  // 删除双向链表 OSTCBList 中的任务控制块
+        ptcb-&gt;OSTCBNext-&gt;OSTCBPrev = (OS_TCB*)0;
+        OSTCBList = ptcb-&gt;OSTCBNext;
+      }else{
+        ptcb-&gt;OSTCBPre-&gt;OSTCBNext = ptcb-&gt;OSTCBNext;
+        ptcb-&gt;OSTCBBext-&gt;OSTCBPrev = ptcb-&gt;OSTCBPrev;
+      }
+      ptcb-&gt;OSTCBNext = OSTCBFreeList; // 将任务控制块归还给OSTCBFreeList链表
+      OSTCBFreeList = ptcb;
+      OS_EXIT_CRITICAL();
+      OSSched();  // 进行一次任务调度
+      return (OS_NO_ERR);
+  }else{
+    OS_EXIT_CRITICAL();
+    return (OS_TASK_DEL_ERR);
+  }
+}
+</code></pre>
+<p>【注解】注重Dummy()函数的使用，以及调度器上锁，开关中断的处理，其目的是将任务删除分为两个阶段，两个阶段的间隔能够响应中断但是不能切换任务。</p>
+<h3 id="_36">任务的挂起与恢复机制</h3>
+<ul>
+<li>任务可以挂起自己或其他任务</li>
+<li>被OSTaskSuspend()函数挂起的任务只能通过调用OSTaskResume()函数来恢复</li>
+</ul>
+<p>```c OSTaskSuspendFunction
+INT8U OSTaskSuspend(INT8U prio)
+{
+  BOOLEAN self;
+  OS_TCB *ptcb;</p>
+<p>if(prio == OS_IDLE_PRIO){   // 不能挂起空闲任务
+    return (OS_TASK_SUSPEND_IDLE);
+  }
+  if(prio &gt;= OS_LOWEST_PRIO &amp;&amp; prio != OS_PRIO_SELF){
+    return (OS_PRIO_INVALID);
+  }
+  OS_ENTER_CRITICAL();
+  if(prio == OS_PRIO_SELF){    // 判断要挂起的任务是否是自己
+    prio = OSTCBCur-&gt;OSTCBPrio;
+    self = TRUE;
+  }else if(prio == OSTCBCur-&gt;OSTCBPrio){
+    self = TRUE;
+  }else{
+    self = FALSE;
+  }
+  if((ptcb = OSTCBPrioTbl[prio]) == (OS_TCB*)0){   // 检查任务是否存在
+    OS_EXIT_CRITICAL();
+    return (OS_TASK_SUSPEND_PRIO);
+  }else{
+    if((OSRdyTbl[ptcb-&gt;OSTCBY] &amp;= ~ptcb-&gt;OSTCBBitX) == 0){   // 存在，则从就绪表中删除
+      OSRdyGrp &amp;= ~ptcb-&gt;OSTCBBitY;
+    }
+    ptcb-&gt;OSTCBStat |= OS_STAT_SUSPEND;  // 将任务状态设置为挂起OS_STAT_SUSPEND
+    OS_EXIT_CRITICAL();
+    if(self == TRUE){   // 任务若挂起则进行任务调度
+      OSSched();
+    }
+    return (OS_NO_ERR);
+  }
+}</p>
+<pre><code>
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230511.png&quot; alt=&quot;OSTaskResume Function&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230524.png&quot; alt=&quot;OSTaskResume Function&quot; width=&quot;50%&quot;/&gt;
+
+
+【任务的状态】——只能清除对应的位，不能清除其他位
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230539.png&quot; alt=&quot;任务的状态位&quot; width=&quot;50%&quot;/&gt;
+
+### 任务延迟 OSTimeDly 的实现机制
++ 时钟中断
+定时器的中断由硬件完成，通过OSTimeTick()实现
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230555.png&quot; alt=&quot;OSTimeDly Function&quot; width=&quot;50%&quot;/&gt;
+
++ 把当前任务从就绪表中删除
++ 将ticks赋值给任务控制块的Delay属性
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230609.png&quot; alt=&quot;OSTimeTick Function&quot; width=&quot;50%&quot;/&gt;
+
+【改变任务状态的两套机制】
++ 任务的挂起与恢复机制
++ 任务延迟(自动恢复)
+
+时钟节拍的精度：10ms一次触发时钟中断，10ms做为操作系统的精度；但是精度不能无限制地提高；
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230626.png&quot; alt=&quot;时钟延迟&quot; width=&quot;50%&quot;/&gt;
+
+【OSTimeDlyResume】
++ 被延时的任务可以不等待延时期满，而通过OSTimeDlyResume()函数来恢复
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230657.png&quot; alt=&quot;OSTimeDlyResume Function&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230711.png&quot; alt=&quot;OSTimeDlyResume Function&quot; width=&quot;50%&quot;/&gt;
+
+## 第十四讲 $\mu$COS-II的任务通信机制
+### 任务通信的基本知识
+【信号量】[关键确定同步和互斥关系]
++ 信号量大于等于零的时候代表可供并发进
+程使用的资源实体数
++ 信号量小于零的时候，表示正在等待使用
+临界区的进程的个数
++ P 操作和 V 操作是不可中断的程序段，称为原语(具有原子性)
+
+### $\mu$COS-II 中事件的概念
++ $\mu$C/OS-II中的任务间通信: 通过信号量、消息邮箱和消息队列来实现任务间通信的
+
+【事件】
+$\mu$C/OS-II将信号量、邮箱和队列统称为事件,在事件控制块中通过OSEventType区分
+【事件与任务的区别】
+事件可以改变任务的状态,任务等待某个事件,基于事件驱动的多任务管理,有限状态机中事件的发生与状态的转换
+【事件控制块】
+各种事件控制函数实现的基本数据结构 
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230726.png&quot; alt=&quot;事件控制块数据结构&quot; width=&quot;70%&quot;/&gt;
+
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230742.png&quot; alt=&quot;事件控制块形象表示&quot; width=&quot;70%&quot;/&gt;
+
+{% message color:info %}
+事件控制块是$\mu$C/OS-II任务管理的实现机制，统一了信号量，邮箱和队列三种方式
+{% endmessage %}
+
+【等待任务列表实现机制】
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230802.png&quot; alt=&quot;等待任务列表&quot; width=&quot;70%&quot;/&gt;
+
+【对等待事件任务列表的三种操作】
++ 将任务置于等待事件任务列表(加入等待事件)
+&lt;center&gt;pevent-&gt;OSEventGrp |= OSMapTbl[prio &gt;&gt; 3]&lt;/center&gt;
+&lt;center&gt;pevent-&gt;OSEventTbl[prio &gt;&gt; 3] |= OSMapTbl[prio &amp; 0x07]&lt;/center&gt;
+
+注解：取出prio的低三位利用掩码数组OSMapTbl对组内编号置位，pevent是当前的任务控制块
+
++ 从等待事件任务列表中使任务脱离等待状态(释放等待时间)
+&lt;center&gt;if ((pevent-&gt;OSEventTbl[prio &gt;&gt; 3] &amp;= ~OSMapTbl[prio &amp; 0x07]) == 0)&lt;/center&gt;
+&lt;center&gt;pevent-&gt;OSEventGrp &amp;= ~OSMapTbl[prio &gt;&gt; 3]&lt;/center&gt;
+
++ 在等待事件任务列表中查找优先级最高的任务(寻找最高优先级)
+&lt;center&gt;y = OSUnMapTbl[pevent-&gt;OSEventGrp]&lt;/center&gt;
+&lt;center&gt;x = OSUnMapTbl[pevent-&gt;OSEventTbl[y]]&lt;/center&gt;
+&lt;center&gt;prio = (y &lt;&lt; 3) + x&lt;/center&gt;
+
+
+单个事件控制块: 创建单个事件,对应有对多个任务在等待该事件发生,即等待事件任务列表
+事件控制块链表: 创建有多个事件,依次串联起来
+空闲事件控制块链表: $\mu$cos采用静态编译方式,提前分配好并初始化事件控制块
+
+【对事件控制块的操作】
++ 初始化事件控制块: 只初始化等待事件任务列表
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230823.png&quot; alt=&quot;OSEventWaitListInit Function&quot; width=&quot;50%&quot;/&gt;
+
++ 使当前任务进入等待某事件的状态(P操作)
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230840.png&quot; alt=&quot;OSEventTaskWait Function&quot; width=&quot;50%&quot;/&gt;
+
++ 当前任务不就绪,并将该任务放置等待任务列表中
++ 操作系统实现多个等待队列, 每个事件维护一个队列
++ 任务不是出于就绪队列(任务就绪表)中,就是在等待队列(事件等待任务列表)中
+
++ 使一个任务就绪（脱离等待状态）(V操作)
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823230941.png&quot; alt=&quot;OSEventTaskRdy Function&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231002.png&quot; alt=&quot;OSEventTaskRdy Function&quot; width=&quot;50%&quot;/&gt;
+
+OSTCBStat任务状态可以等待多个事件,等信号量,邮箱,队列等,这几种机制互不影响
+
++ 因为等待超时而使任务进入就绪态
+
+### $\mu$C/OS-II 中信号量的实现机制
+【创建信号量】
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231022.png&quot; alt=&quot;OSSemCreate Function&quot; width=&quot;50%&quot;/&gt;
+
+【P操作, 等待一个信号量】
+{% message color:info%}
+P操作不能在中断服务程序中进行
+{% endmessage %}
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231046.png&quot; alt=&quot;OSSemPend Function&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231105.png&quot; alt=&quot;OSSemPend Function&quot; width=&quot;50%&quot;/&gt;
+
+【V操作, 发出一个信号量】
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231140.png&quot; alt=&quot;OSSemPost Function&quot; width=&quot;50%&quot;/&gt;
+
+### 信号量超时机制
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231159.png&quot; alt=&quot;等待超时时间&quot; width=&quot;60%&quot;/&gt;
+
+## 第十五讲 $\mu$COS-II的任务通信机制II
+### 优先级反转的概念
+{% message color:info%}
+背景: $\mu$C/OS-II不允许多任务处于同一优先级,在利用信号量实现互斥操作时，任务是不对等的，存在优先级差异
+{% endmessage %}
+
+【优先级翻转】
+在有多个任务需要使用共享资源的情况下，可能会出现高优先级任务被低优先级任务阻塞，并等待低优先级任务执行的现象；高优先级任务需要等待低优先级任务释放资源，而低优先级任务又正在等待中等优先级任务，这种现象就被称为优先级反转
+
+【解决方案】
++ 优先级继承协议
+当更高优先级任务Ta被低优先级任务Td阻塞时，Td暂时继承Ta的优先级；这将防止中间优先级任务抢占任务Td，而使高优先级任务Ta的阻塞时间延长
++ 优先级天花板
+将申请某资源的任务的优先级提升到可能访问该资源的所有任务中最高优先级任务的优先级(这个优先级称为该资源的优先级天花板)
++ 区别
+    + 优先级继承：只有当**占有资源的低优先级任务被阻塞**时，才会提高占有资源任务的优先级
+    + 优先级天花板：不论是否发生阻塞都提升
+
+### $\mu$COS-II 中互斥型信号量实现机制 
+【优先级继承优先级】
+$\mu$C/OS-II中，在处理互斥型信号量时，**没有被占用的**、**略高于最高优先级的优先级**被保留给“优先级继承优先级（PIP）”，融合了“优先级继承”和“优先级天花板”的解决方案
++ 只有在发生优先级反转时才提升优先级
+
+【uC/OS 中互斥型信号量Mutex】——对比信号量事件的实现机制
+只能做互斥操作，信号量属于二值信号量;Mutex是事件的一种, 只能供任务使用并且因为牵扯到优先级继承优先级等任务级的处理，所以不能用于中断
+
++ 建立一个互斥型信号量
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231307.png&quot; alt=&quot;OSMutexCreate Function&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231322.png&quot; alt=&quot;OSMutexCreate&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231342.png&quot; alt=&quot;Mutex的TCB结构&quot; width=&quot;50%&quot;/&gt;
+
+OSEventCnt被划分为高8位和低8位，其中高8位表示保留优先级；低8位为全1时表示信号量有效没有被占用，当信号量被占用时，低8位标识占有该信号量的任务优先级即0$\sim$63
+
++ 等待一个互斥型信号量(P操作)
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231402.png&quot; alt=&quot;OSMutexPend&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231424.png&quot; alt=&quot;OSMutexPend&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231443.png&quot; alt=&quot;OSMutexPend&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231459.png&quot; alt=&quot;OSMutexPend&quot; width=&quot;50%&quot;/&gt;
+
++ 释放一个互斥型信号量(V操作)
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231521.png&quot; alt=&quot;OSMutexPost&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231541.png&quot; alt=&quot;OSMutexPost&quot; width=&quot;50%&quot;/&gt;
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231602.png&quot; alt=&quot;OSMutexPost&quot; width=&quot;50%&quot;/&gt;
+
+### 其它任务间通信机制
++ 消息邮箱
+$\mu$C/OS-II中的另一种基于事件的通信机制，可以使一个任务或者中断服务程序向另一个任务发送一个指针型的变量。该指针指向了一个包含了“消息”的特定数据结构
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231712.png&quot; alt=&quot;消息邮箱的TCB结构&quot; width=&quot;50%&quot;/&gt;
+
++ 消息队列
+消息队列是$\mu$C/OS-II中又一种基于事件的通信机制。可以使一个任务或者中断服务程序向另一个任务发送多个以指针方式定义的变量。
+    + 根据具体应用，每个指针指向的数据结构可以有所不同
+    + 可看做多个邮箱组成的数组，只是共用了同一个等待任务列表
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231727.png&quot; alt=&quot;消息队列的TCB结构&quot; width=&quot;50%&quot;/&gt;
+
++ 事件标志组
+$\mu$C/OS-II中任务可以等待多个事件的到来。一个任务也可以发出多个事件，任务和事件之间有着多对多的映射关系。
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231746.png&quot; alt=&quot;事件标志组的TCB结构&quot; width=&quot;50%&quot;/&gt;
+
+### $\mu$C/OS-II的内存分区管理 
+$\mu$C/OS-II将内存按分区来处理
++ 可以分配和释放固定大小的内存块
++ 解决了内存碎片问题
++ 分配、释放函数执行时间确定了
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231802.png&quot; alt=&quot;内存分区管理机制&quot; width=&quot;50%&quot;/&gt;
+
+## 题型分析
+### 简答题
+#### 嵌入式系统的定义
++ 标准定义：以应用为中心、以计算机技术为基础，软、硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗等严格要求的专用计算机系统
++ 简单描述：嵌入到对象体中的专用计算机系统
+
+#### 嵌入式系统的三要素
+1. 嵌入式：嵌入到对象体系中，有对象环境要求
+
+2. 专用性：软、硬件按对象要求裁剪
+
+3. 计算机：实现对象的智能化功能
+
+#### 嵌入式系统与通用计算机的区别
+1. 专用性
+2. 小型化(资源受限)
+3. 软硬件设计一体化
+4. 需要交叉开发环境
+
+#### 简述嵌入式实时系统的特点
++ 实时性
+嵌入式实时系统分为硬实时系统和软实时系统，对任务的响应时间有极高的要求。系统必须在规定的时间内完成特定任务，否则可能导致系统故障或性能下降
++ 结果正确性
+嵌入式实时系统的正确性不仅依赖于系统计算的逻辑结果(计算逻辑)，还依赖于产生这些结果的时间(计算时间)
++ 可预测性
+嵌入式实时系统需要提供任务执行时间的可预测性，即任务在不同情况下都能在规定的时间内完成
++ 稳定性和可靠性
+对于嵌入式实时系统来说，稳定性和可靠性至关重要。系统在长时间运行中不能发生崩溃，而且对于异常情况的处理必须是可靠的
+
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823231903.png&quot;/&gt;
+
+#### CPU寄存器与内存的区别
++ CPU寄存器是位于CPU内部的小型、高速存储单元，用于临时存储和快速访问指令和数据；
++ 内存是位于计算机主板上的存储设备，用于存储程序和数据，供CPU读取和写入；
++ 寄存器速度更快但容量有限，用于临时存储；
++ 内存速度较慢但容量较大，用于长期存储。
+#### RISC指令集只包含有少量常用指令，为什么有时反而比CISC指令集的性能更好？
++ 指令集分析：指令复杂度影响处理器实现性能，CISC中20%的指令使用率达到80%，但80%的复杂指令使用率仅20%，而RISC只包含有少量常用指令，不会造成指令集的冗余；
++ 指令译码逻辑：CISC指令集采用微指令技术增加了硬件复杂度，而RISC采用硬连线的指令译码逻辑，开发简单；
++ 指令执行分析：CISC指令长度不一，执行单条指令需要多个周期，而RISC指令长度固定，一个周期执行一条指令，通过少量常用指令的组合实现复杂的功能，容易实现高性能；
++ Load/Store结构：RISC还采用Load/Store结构进行优化，完成数据在寄存器和存储器之间的传输，保证处理器直接从寄存器中获取操作数，能够加快运算的执行效率，实现更高的性能。
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823234724.png&quot;/&gt;
+
+#### 简述宏和函数的区别？二者各自的优缺点是什么？
++ 编译阶段：编译器会将相关代码放到宏名出现的每一个地方并且宏内容会被直接展开到代码中，宏的代码在任何出现宏名的地方都会编译一次；而函数的代码只需要编译一次，在编译时定义，但是实际在执行发生在运行时
++ 调用返回：使用宏时不需要保存/恢复上下文，也不必返回；而调用函数时，需要保存/回复上下文，需要返回，会有函数调用开销；
++ 优缺点：宏适用于代码简单的情况，不会有函数调用开销，但是容易造成代码膨胀；函数适用于代码复杂的情况，可以完成更复杂的功能，但是会有函数调用开销。
+
+#### 简述ARM异常响应过程以及异常向量表的作用
+【ARM异常处理】
++ 当中断发生时，系统执行完当前指令后，会跳转到相应的异常中断处理程序处执行；
++ 执行完成后，程序返回到发生中断的指令的下一条指 令处执行；
++ 进入异常中断处理程序时要保存现场，返回时要恢复现场；
+
+【异常向量表】
++ 当异常发生时，处理器会把PC设置为一个特定的存储器地址；
++ 这一地址放在被称为向量表(vector table)的特定地址范围内，用于对不同模式的异常提供异常处理程序的入口；
++ 异常向量表通常放在存储地址的低端；
+
+#### 简述$\mu$cos中优先级位图算法的优点
++ 常数时间选择任务，无论任务的数量如何，选择最高优先级任务的时间是确定的
++ 实现简单，容易维护
++ 可以快速选择最高优先级任务
++ 内存占用低
+
+#### 在ARM汇编语言程序里，什么是伪指令，他们有什么作用？
++ ARM伪指令不是真正的ARM指令，在汇编编译器对源程序进行汇编处理时会被替换成对应的ARM指令或指令序列
++ 伪指令主要用于指导汇编器怎样对源程序进行汇编，在汇编后不会生成机器码，仅在汇编过程中起作用
+#### 能否用全局变量来实现任务间的通信？它有什么优缺点？该如何正确使用？
+可以用全局变量实现任务间的通信
+
++ 优点:
+    + 简单直观： 使用全局变量简化了任务间通信的实现，因为所有任务都能够直接访问这些共享变量
+    + 高效： 全局变量的访问通常比通过消息传递等其他通信机制更为高效，因为直接在内存中进行读写操作
++ 缺点：
+    + 缺少同步与互斥关系的管理机制： 如果多个任务同时尝试读取或写入全局变量，可能导致意外行为和数据损坏
+    + 难以调试： 由于多个任务可以同时访问全局变量，发现和调试由于共享变量而引起的问题可能会更加困难
+    + 扩展性差： 当系统规模扩大时，全局变量的管理和维护可能变得复杂，使得系统的扩展性变差
++ 正确使用的方法：
+    + 加锁机制： 在访问全局变量时，使用加锁机制确保同一时间只有一个任务可以访问该变量，从而避免相互竞争
+    + 原子操作： 对于某些特定的变量操作，可以使用原子操作，保证执行单条指令不会被中断，例如SWP实现互斥访问
+    + 信号量机制： 使用信号量机制来确保对全局变量的安全访问
+#### $\mu$cos中任务的调度一般分为任务级调度和中断级调度，简述二者的区别
++ 调度触发条件：任务级调度是当前任务放弃CPU触发的，中断级调度是由中断事件触发的
++ 调度时机不同：任务级调度是在时间片用完、被高优先级任务抢占或等待某个事件时进行的，而中断级调度在中断返回的时候进行任务的调度
++ 恢复现场不同：任务级调度在调度点每次都需要保护现场并恢复现场，而中断级调度因为在进行中断处理时已保存过现场，因此在调度点只需恢复现场
++ 任务级调度与中断级调度是两套独立的机制，互不影响
+
+#### 优先级反转如何发生？又如何解决？
+优先级反转现象：
+在有多个任务需要使用共享资源的情况下，可能会出现高优先级任务被低优先级任务阻塞，并等待低优先级任务执行的现象；高优先级任务需要等待低优先级任务释放资源，而低优先级任务又正在等待中等优先级任务，这就造成了优先级反转
+解决方案：
++ 优先级继承协议
+当更高优先级任务Ta被低优先级任务Td阻塞时，Td暂时继承Ta的优先级；这将防止中间优先级任务抢占任务Td，而使高优先级任务Ta的阻塞时间延长
+
++ 优先级天花板
+将申请某资源的任务的优先级提升到可能访问该资源的所有任务中最高优先级任务的优先级(这个优先级称为该资源的优先级天花板)
+
++ 优先级继承优先级
+在处理互斥型信号量时，没有被占用的、略高于最高优先级的优先级被保留，并用于在发生优先级反转时提升任务的优先级
+
+#### 简述$\mu$cos中解决互斥的3种办法，以及它们各自的优缺点
++ 关中断
+    + 优点：简单直接，实现较为容易
+    + 缺点：力度较大，一旦使用会阻塞整个系统；不适用于实时系统，可能导致系统响应不及时
++ 禁止任务切换——调度器上锁机制
+    + 优点：系统开销较小，
+    + 缺点：由于锁定所有任务，所以若禁止切换时间过长，影响系统的响应性能
++ 使用信号量
+    + 优点：只影响竞争共享资源的任务
+    + 缺点：虽然$\mu$cos提出了互斥型信号量机制来解决优先级反转问题，但是这种方法的系统开销较大，对系统的响应性能会有一定影响
+
+#### 冯诺依曼体系结构与哈佛体系结构的区别？
++ 存储器结构：冯诺依曼体系结构中程序指令存储器和数据存储器共用同一个存储体，而哈佛体系结构使用两个独立的存储器模块，分别存储指令和数据；
++ 位宽：冯诺依曼体系结构中程序指令和数据宽度相同，而哈佛体系结构可以不同；
++ 总线：冯诺依曼体系结构使用一条总线传输，而哈佛体系结构采用两条独立的总线，互不影响。
+&lt;img src=&quot;https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/blog/xdu/collaboration/20240823234756.png&quot;/&gt;
+
+#### 理解Load/Store结构
++ 在通用寄存器中操作，从存储器中读某个值到寄存器，操作完再将其放回存储器中
++ 只有Load和Store指令允许直接在内存和通用寄存器之间进行数据的读取和存储，其他例如算数和逻辑运算指令主要在通用寄存器之间进行，不直接涉及内存。有助于简化指令集结构，提高指令执行效率
+#### ARM指令的三地址指令格式与条件执行
++ 三地址指令格式：ARM指令的三地址格式是指指令中含有目的操作数地址，第一源操作数地址，第二源操作数地址，根据源操作数地址得到源操作数进行运算再存到目的操作数地址；
++ 条件执行：ARM状态下，几乎所有的指令均按照CPSR中条件码的状态以及指令中的条件域有条件地执行：条件满足时，指令执行；不满足时，指令被忽略。
+
+#### 交换指令SWP的特殊性
++ 功能概述：交换指令能够在存储器和寄存器之间交换数据，常用于实现信号量操作，解决进程之间的同步与互斥关系；
++ 特殊性体现：交换指令是一个原子操作，在并发环境中不会被中断，因此在解决信号量访问以及修改的过程中，可以用交换指令替代关中断机制实现信号量的操作，提升操作系统的执行效率。
+
+#### 简述RISV-V的主要特征
+RISC-V，是一种基于“精简指令集（RISC）”原则的指令集架构，它具有开源、重新设计(后发优势)、简单哲学、模块化指令集、指令集可扩展的特点。
+
+#### 嵌入式系统最小系统的构成
+CPU能够运行所需的模块有（最小系统）：电源、时钟、复位、内存、调试接口
+
+#### 简述晶体与晶振的区别
+时钟一般由晶体振荡器提供，而晶体和晶振是构成晶体振荡器的两种方式:
+
++ 晶体(无源): 封装内部只含有晶体, 没有内部电源, 驱动电路由设计者提供;
++ 晶振(有源): 封装中包含了完整的晶体振荡器电路, 需要电源
+
+#### 理解$\mu$cos中任务级调度与中断级调度之间的关系
++ 关系：$\mu$cos实现的任务级调度与中断级调度是两个相互独立的机制，互不影响；
+
+【保护任务同时可以响应中断】
+通过给任务调度器上锁机制，保证中断响应可以执行中断服务程序，但是在中断处理结束时，如果调度器已上锁，不会进行最高优先级任务的调度，而直接返回被中断的任务继续执行；否则由于$\mu$cos是基于抢占式中断调度的，会进行最高优先级任务的调度。
+
+### 程序题
+#### C 程序与汇编程序混合编程——字符串拷贝
+```c
+#include&lt;stdio.h&gt;
+extern void strcopy(char *d, const char *s);
+int main()
+{
+    const char *srcstr = &quot;First string-source&quot;;
+    char dststr[] = &quot;Second string-destination&quot;;
+    printf(&quot;Before copying:\n&quot;);
+    printf(&quot;%s\n%s\n&quot;, srcstr, dststr);
+    strcopy(dststr, srcstr);
+    printf(&quot;After copying:\n&quot;);
+    printf(&quot;%s\n%s\n&quot;, srcstr, dststr);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-arm">AREA scopy CODE, READONLY
+EXPORT strcopy
+; 默认R0存储第一个参数，R1存储第二个参数
+strcopy
+    LDRB R2, [R1], #1     ; srcstr
+    STRB R2, [R0], #1     ; dststr
+    CMP R2, #0
+    BNE strcopy
+    MOV PC, LR
+    END
+</code></pre>
+<h4 id="lcd">LCD显示——水平直线</h4>
+<pre><code class="language-c">//已知像素颜色函数
+void PutPixel(UINT16T x, UINT16T y, UINT16T c);
+</code></pre>
+<pre><code class="language-c">void Lcd_Draw_HLine(INT16T usX0, INT16T usX1, INT16T usY0, UINT16T ucColor, UINT16T usWidth)
+{
+    INT16T usLen;
+
+    if( usX1 &lt; usX0 )
+    {
+        GUISWAP (usX1, usX0); // 保证x0&lt;=x1,否则软中断
+    }
+
+    while( (usWidth--) &gt; 0 )   // 绘制像素点行数
+    {
+        usLen = usX1 - usX0 + 1;
+        while( (usLen--) &gt; 0 )    // 绘制像素点列数
+        {
+            PutPixel(usX0 + usLen, usY0, ucColor);
+        }
+        usY0++;                   // 移至下一行
+    }
+}
+</code></pre>
+<h4 id="mucos">$\mu$cos信号量任务管理——键盘识别显示</h4>
+<pre><code class="language-c">// 预定义函数
+INT8U keyScan(void);     // 识别按键代号
+void keyPrint(INT8U x, INT8U y, INT8U c);  // 显示按键代号
+</code></pre>
+<pre><code class="language-c">// 键盘中断服务程序
+extern OS_EVENT *Keypad_Sem;
+void __KeyPad(void)
+{
+    INT8U err;
+    ClearPending(BIT_EINT1);  // 清除中断源
+    err = OSSemPost(Keypad_Sem);  // 释放键盘信号量
+}
+</code></pre>
+<pre><code class="language-c">// 键盘显示任务
+OS_EVENT *Keypad_Sem;
+void KeyTask(void *data)
+{
+    Keypad_Sem = OSSemCreate(0);
+    INT8U err, key, x = 100, y = 100; // 显示坐标
+    while(1){
+        OSSemPend(Keypad_Sem, 0, &amp;err);  // 申请键盘信号量
+        key = keyScan();     // 获取中断按键
+        keyPrint(x, y, key);
+    }
+}
+</code></pre>
+<h4 id="swp">基于SWP指令的信号量访问</h4>
+<pre><code class="language-arm">SEM EQU 0x20001000
+SEM_CHECK
+    MOV R1, #0
+    LDR R0, =SEM      ; 信号量地址
+    SWP R1, R1, [R0]  ; 原子操作，访问信号量
+    CMP R1, #0
+    BEQ SEM_CHECK
+</code></pre>
+<h4 id="ledgpiob">LED——基于GPIOB口的发光二极管设计</h4>
+<pre><code class="language-c">#define rGPBCON (*(volatile unsigned *)0xCD74)  //控制端口地址
+#define rGPBDAT (*(volatile unsigned *)0xCD78)  //数据端口地址
+#define rGPBUP  (*(volatile unsigned *)0xCD7C)  //上拉电阻端口地址
+void led_on_off(void)
+{
+    rGPBCON = 0x15400;        //配置控制端口
+    rGPBUP = 0x7FF;           //配置上拉电阻
+    rGPBDAT = 0;              //配置数据端口
+    deLay(30);
+    rGPBDAT = 0x0010;
+    deLay(1000);
+}
+int main(void)
+{
+    sys_init();
+    while(1){
+        led_on_off();
+    }
+}
+</code></pre>
+<h4 id="mucos_1">$\mu$cos互斥管理——串口输出信息</h4>
+<pre><code class="language-c">OS_EVENT *UART_sem;
+void myTask(void *data)
+{
+    unsigned char err;
+    UART_sem = OSSemCreate(1);    // 创建信号量
+    while(1){
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sending(&quot;I'm running now!&quot;);
+        OSTimDly(30);
+        OSSemPost(UART_sem);
+    }
+}
+</code></pre>
+<h3 id="_37">程序题准备部分</h3>
+<h4 id="_38">多任务应用函数</h4>
+<pre><code class="language-c">/*-----------创建任务的堆栈------------- */
+#define STACKSIZE 256  // 堆栈大小
+OS_STK Stack[STACKSIZE]; // 全局静态分配
+const char Id = '1';   // 任务指针参数
+/*------------任务创建函数---------------*/
+INT8U OSTaskCreate (void (*task)(void *pd), void *pdata, OS_STK *ptos, INT8U prio);
+// task: 指向任务代码的指针; pdata: 任务开始时，传递给任务的指针参数
+// ptos: 任务的堆栈栈顶指针; prio: 任务的优先级
+/*------------任务删除函数---------------*/
+INT8U OSTaskDel(INT8U prio);
+OSTaskDel(OS_PRIO_SELF);    
+// OS_PRIO_SELF: 删除当前任务及其创建的子任务
+/*------------内核启动函数---------------*/
+void OSStart (void);
+// 创建完任务后必须通过OSStart函数启动操作系统内核运行任务
+
+// 其他函数
+/*------------改变任务优先级函数---------------*/
+INT8U OSTaskChangePrio (INT8U oldprio, INT8U newprio);
+/*------------挂起任务函数---------------*/
+INT8U OSTaskSuspend (INT8U prio);
+/*------------恢复任务函数---------------*/
+INT8U OSTaskResume (INT8U prio);
+/*------------时钟延迟函数---------------*/
+void OSTimeDly (INT16U ticks);
+/*------------时钟延迟恢复函数---------------*/
+INT8U OSTimeDlyResume (INT8U prio);
+// 提前恢复被延时的任务
+</code></pre>
+<pre><code class="language-c">// 创建多任务的实验
+OS_EVENT *UART_sem;
+unsigned char err;     
+
+/* allocate memory for tasks' stacks */
+#define STACKSIZE 256
+
+/* Global Variable */
+OS_STK Stack1[STACKSIZE];
+OS_STK Stack2[STACKSIZE];
+OS_STK StackMain[STACKSIZE];
+
+const char Id1 = '1';
+const char Id2 = '2';
+
+void Task1(void *Id)
+{
+    while(1){
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task1 Called.\r\n&quot;);
+        OSTimeDly(50);
+        OSSemPost(UART_sem);
+    }
+}
+
+void Task2(void *Id)
+{
+    while(1)
+    {
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task2 Called.\r\n&quot;);
+        OSSemPost(UART_sem);
+    }
+}
+// 启动任务函数，TaskStart任务中创建两个子任务
+void TaskStart(void *Id)
+{
+     UART_sem = OSSemCreate(1);
+
+     OSTaskCreate(Task1, (void *)&amp;Id1, &amp;Stack1[STACKSIZE - 1], 2);
+     OSTaskCreate(Task2, (void *)&amp;Id2, &amp;Stack2[STACKSIZE - 1], 3);
+     OSTaskDel(OS_PRIO_SELF);   // Delete current task——TaskStart
+}
+
+void Main (void)
+{
+    OSInit();
+    OSTimeSet(0);
+
+    /* create the start task */
+    OSTaskCreate(TaskStart,(void *)0, &amp;StackMain[STACKSIZE - 1], 0);
+
+    /* start the operating system */
+    OSStart(); 
+}
+</code></pre>
+<pre><code class="language-c">// 创建多任务——PPT实例
+INT8U Task1Data, Task2Data;
+INT8U Task1prio=1, Task2prio=2;
+#define STACKSIZE 256
+OS_STK Task1Stk[STACKSIZE];
+OS_STK Task1Stk[STACKSIZE];
+void Task1(void)
+{
+    while(1){
+        Task1Data++;
+        OSTimeDly(25);
+    }
+}
+void Task2(void)
+{
+    while(1)
+    {
+        Task2Data++;
+        OSTimeDly(50);
+    }
+}
+void main()
+{
+    OSInit ();    // 必要的
+    OSTaskCreate(Task1, (void*)&amp;Task1Data, (void *)&amp;Task1Stk[STACKSIZE-1], Task1prio);
+    OSTaskCreate(Task2, (void *)&amp;Task2Data, (void *)&amp;Task2Stk[STACKSIZE-1],Task2prio);
+    OSStart();    // 必要的
+}
+</code></pre>
+<h4 id="_39">信号量应用函数</h4>
+<pre><code class="language-c">OS_EVENT *pevent;   // 创建事件变量
+OS_EVENT *OSSemCreate(INT16U cnt); // 信号量创建函数
+// cnt = 0~65535
+void OSSemPend(OS_EVENT *pevent, INT16U timeout, INT8U *err);   // 等待信号量函数
+// 如果timeout=0表示不启用等待超时
+INT8U OSSemPost(OS_EVENT *pevent); // 释放一个信号量
+/*---------------常用操作--------------*/
+OS_EVENT *pevent;
+unsigned char err;
+OSSemPend(pevent, 0, &amp;err);    // P操作
+err = OSSemPost(pevent);       // V操作
+</code></pre>
+<pre><code class="language-c">// 信号量操作的实验——两个任务同步关系
+// 交替执行，向串口输出信息
+#define  TaskStkLeath 128
+OS_STK TestTask1Stk[TaskStkLeath];
+OS_STK TestTask2Stk[TaskStkLeath];
+
+OS_EVENT *sem1;
+OS_EVENT *sem2;
+unsigned char err;
+
+void Task1(void *pdata)
+{
+    while(1)
+    {
+        OSSemPend(sem1, 0, &amp;err);
+        uart_sendstring(&quot;Now task1 is running!\r\n&quot;);
+        OSTimeDly(30);
+        uart_sendstring(&quot;Task1 resumed task2!\r\n&quot;);
+        OSSemPost(sem2);
+    }
+}
+
+void Task2(void *pdata)
+{
+    while(1)
+    {
+        OSSemPend(sem2, 0, &amp;err);
+        uart_sendstring(&quot;Now task2 is running!\r\n&quot;);
+        OSTimeDly(30);
+        uart_sendstring(&quot;Task2 resumed task1!\r\n&quot;);
+        OSSemPost(sem1);
+    }
+}
+
+void Main (void)
+{
+    OSInit();
+    // 创建信号量
+    sem1 = OSSemCreate(1);
+    sem2 = OSSemCreate(0);
+    // 创建两个任务
+    OSTaskCreate(Task1,(void *)1,&amp;TestTask1Stk[TaskStkLeath-1],5);
+    OSTaskCreate(Task2,(void *)2,&amp;TestTask2Stk[TaskStkLeath-1],6);
+
+    OSStart();   
+}
+</code></pre>
+<pre><code class="language-c">// 信号量操作的实验——两个任务互斥关系
+// 任务的挂起与恢复机制
+#define  TaskStkLeath 128
+OS_EVENT *UART_sem;
+unsigned char err;
+
+OS_STK TestTask1Stk[TaskStkLeath];
+OS_STK TestTask2Stk[TaskStkLeath];
+
+void Task1(void *pdata)
+{
+    while(1)
+    {
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task1: i will Suspend by myself\r\n&quot;);
+        OSSemPost(UART_sem);
+
+        OSTaskSuspend(2);      // 挂起任务 1
+
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task1: i Resumed by Task2\r\n&quot;);
+        OSSemPost(UART_sem);
+
+        OSTimeDly(10);
+    }
+}
+
+void Task2(void *pdata)
+{
+    while(1)
+    {
+        OSSemPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task2: i am executing\r\n&quot;);
+        OSSemPost(UART_sem);  
+
+        if( OSTaskResume(2) == OS_ERR_NONE )   // 唤醒任务1
+        {
+            OSSemPend(UART_sem, 0, &amp;err);
+            uart_sendstring(&quot;Task2: i Resumed Task1\n&quot;);
+            OSSemPost(UART_sem);    
+        }
+        OSTimeDly(5);
+    }
+}
+
+void Main(void)
+{     
+    OSInit();
+    UART_sem = OSSemCreate(1);
+
+    OSTaskCreate(Task1,(void *)1,&amp;TestTask1Stk[TaskStkLeath-1],2);
+    OSTaskCreate(Task2,(void *)2,&amp;TestTask2Stk[TaskStkLeath-1],1);
+
+    OSStart();   
+}
+</code></pre>
+<h4 id="_40">互斥型信号量应用函数</h4>
+<pre><code class="language-c">OS_EVENT *pevent;   // 创建事件变量
+OS_EVENT *OSMutexCreate (INT8U prio, INT8U *err); // 互斥信号量创建函数
+// prio 保留优先级 PIP
+void OSMutexPend (OS_EVENT *pevent, INT16U timeout, INT8U *err);   // 等待互斥信号量函数
+// 如果timeout=0表示不启用等待超时
+INT8U OSMutexPost (OS_EVENT *pevent); // 释放一个信号量
+/*---------------常用操作--------------*/
+OS_EVENT *pevent;
+INT8U err;
+prevent = OSMutexCreate(2, &amp;err);
+OSMutexPend(pevent, 0, &amp;err);    // P操作
+err = OSMutexPost(pevent);       // V操作
+</code></pre>
+<pre><code class="language-c">// 互斥型信号量操作的实验——两个任务互斥关系
+#define  TaskStkLeath 128
+OS_EVENT *UART_sem;
+unsigned char err;
+
+OS_STK TestTask1Stk[TaskStkLeath];
+OS_STK TestTask2Stk[TaskStkLeath];
+
+void Task1(void *pdata)
+{
+    while(1)
+    {
+        OSMutexPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task1: i will Suspend by myself\r\n&quot;);
+        OSMutexPost(UART_sem);
+
+        OSTimeDly(10);
+    }
+}
+
+void Task2(void *pdata)
+{
+    while(1)
+    {
+        OSMutexPend(UART_sem, 0, &amp;err);
+        uart_sendstring(&quot;Task2: i am executing\r\n&quot;);
+        OSMutexPost(UART_sem);  
+
+        OSTimeDly(5);
+    }
+}
+
+void Main(void)
+{     
+    OSInit();
+    UART_sem = OSMutexCreate(1, &amp;err);
+
+    OSTaskCreate(Task1,(void *)1,&amp;TestTask1Stk[TaskStkLeath-1],2);
+    OSTaskCreate(Task2,(void *)2,&amp;TestTask2Stk[TaskStkLeath-1],3);
+
+    OSStart();   
+}
+</code></pre>
+<h4 id="lcd_1">LCD显示屏相关函数</h4>
+<pre><code class="language-c">/***********************************************************
+* func:     指定颜色填充区域
+* para:     usLeft,usTop,usRight,usBottom -- 矩形区域坐标
+*           ucColor -- appointed color value
+* ret:      none
+***********************************************************/
+void lcd_clr_rect(INT16T usLeft, INT16T usTop, INT16T usRight, INT16T usBottom, UINT16T ucColor)
+{
+    UINT32T i, j;
+
+    for (i = usLeft; i &lt; usRight; i++)
+        for (j = usTop; j &lt; usBottom; j++)
+        {
+            PutPixel_16Bit_320240(i, j, ucColor);   // 绘制像素点
+        }
+}
+</code></pre>
+<pre><code class="language-c">/***********************************************************
+* func:     指定颜色绘制水平直线
+* para:     usX0,usY0 -- 起点坐标
+*           usX1 -- 终点x坐标
+*           ucColor -- appointed color value
+*           usWidth -- line's width 
+***********************************************************/
+void Lcd_Draw_HLine(INT16T usX0, INT16T usX1, INT16T usY0, UINT16T ucColor, UINT16T usWidth)
+{
+    INT16T usLen;
+
+    if( usX1 &lt; usX0 )
+    {
+        GUISWAP (usX1, usX0);
+    }
+
+    while( (usWidth--) &gt; 0 )
+    {
+        usLen = usX1 - usX0 + 1;
+        while( (usLen--) &gt; 0 )
+        {
+            PutPixel_16Bit_320240(usX0 + usLen, usY0, ucColor);
+        }
+        usY0++;
+    }
+}
+</code></pre>
+<pre><code class="language-c">/***********************************************************
+* func:     指定颜色绘制垂直直线
+* para:     usX0,usY0 -- 起点坐标
+*           usY1 -- 终点Y坐标
+*           ucColor -- appointed color value
+*           usWidth -- line's width
+***********************************************************/
+void Lcd_Draw_VLine (INT16T usY0, INT16T usY1, INT16T usX0, UINT16T ucColor, UINT16T usWidth)
+{
+    INT16T usLen;
+
+    if( usY1 &lt; usY0 )
+    {
+        GUISWAP (usY1, usY0);
+    }
+
+    while( (usWidth--) &gt; 0 )
+    {
+        usLen = usY1 - usY0 + 1;
+        while( (usLen--) &gt; 0 )
+        {
+            PutPixel_16Bit_320240(usX0, usY0 + usLen, ucColor);
+        }
+        usX0++;
+    }
+}
+</code></pre>
+<pre><code class="language-c">/***********************************************************
+* func:     指定颜色绘制矩形
+* para:     usLeft,usTop,usRight,usBottom -- 矩形区域坐标
+*           ucColor -- appointed color value
+* ret:      none
+***********************************************************/
+void Lcd_Draw_Box(INT16T usLeft, INT16T usTop, INT16T usRight, INT16T usBottom, UINT16T ucColor)
+{
+    Lcd_Draw_HLine(usLeft, usRight,  usTop,    ucColor, 1);
+    Lcd_Draw_HLine(usLeft, usRight,  usBottom, ucColor, 1);
+    Lcd_Draw_VLine(usTop,  usBottom, usLeft,   ucColor, 1);
+    Lcd_Draw_VLine(usTop,  usBottom, usRight,  ucColor, 1);
+}
+</code></pre>
+<pre><code class="language-c">// 其他函数
+/**********************************************************
+* name:     Lcd_Draw_Line()
+* func:     指定颜色绘制直线
+* para:     usX0,usY0 -- 起点坐标
+*           usX1,usY1 -- 终点坐标
+*           ucColor -- appointed color value
+*           usWidth -- line's width 
+***********************************************************/
+void Lcd_Draw_Line(INT16T usX0, INT16T usY0, INT16T usX1, INT16T usY1, UINT16T ucColor, UINT16T usWidth)
+{
+    INT16T usDx;
+    INT16T usDy;
+    INT16T y_sign;
+    INT16T x_sign;
+    INT16T decision;
+    INT16T wCurx, wCury, wNextx, wNexty, wpy, wpx;
+
+    if( usY0 == usY1 )
+    {
+        Lcd_Draw_HLine (usX0, usX1, usY0, ucColor, usWidth);
+        return;
+    }
+    if( usX0 == usX1 )
+    {
+        Lcd_Draw_VLine (usY0, usY1, usX0, ucColor, usWidth);
+        return;
+    }
+    usDx = abs(usX0 - usX1);
+    usDy = abs(usY0 - usY1);
+    if( ((usDx &gt;= usDy &amp;&amp; (usX0 &gt; usX1)) ||
+        ((usDy &gt; usDx) &amp;&amp; (usY0 &gt; usY1))) )
+    {
+        GUISWAP(usX1, usX0);
+        GUISWAP(usY1, usY0);
+    }
+    y_sign = (usY1 - usY0) / usDy;
+    x_sign = (usX1 - usX0) / usDx;
+
+    if( usDx &gt;= usDy )
+    {
+        for( wCurx = usX0, wCury = usY0, wNextx = usX1,
+             wNexty = usY1, decision = (usDx &gt;&gt; 1);
+             wCurx &lt;= wNextx; wCurx++, wNextx--, decision += usDy )
+        {
+            if( decision &gt;= usDx )
+            {
+                decision -= usDx;
+                wCury += y_sign;
+                wNexty -= y_sign;
+            }
+            for( wpy = wCury - usWidth / 2;
+                 wpy &lt;= wCury + usWidth / 2; wpy++ )
+            {
+                PutPixel_16Bit_320240(wCurx, wpy, ucColor);
+            }
+
+            for( wpy = wNexty - usWidth / 2;
+                 wpy &lt;= wNexty + usWidth / 2; wpy++ )
+            {
+                PutPixel_16Bit_320240(wNextx, wpy, ucColor);
+            }
+        }
+    }
+    else
+    {
+        for( wCurx = usX0, wCury = usY0, wNextx = usX1,
+             wNexty = usY1, decision = (usDy &gt;&gt; 1);
+             wCury &lt;= wNexty; wCury++, wNexty--, decision += usDx )
+        {
+            if( decision &gt;= usDy )
+            {
+                decision -= usDy;
+                wCurx += x_sign;
+                wNextx -= x_sign;
+            }
+            for( wpx = wCurx - usWidth / 2;
+                 wpx &lt;= wCurx + usWidth / 2; wpx++ )
+            {
+                PutPixel_16Bit_320240(wpx, wCury, ucColor);
+            }
+
+            for( wpx = wNextx - usWidth / 2;
+                 wpx &lt;= wNextx + usWidth / 2; wpx++ )
+            {
+                PutPixel_16Bit_320240(wpx, wNexty, ucColor);
+            }
+        }
+    }
+}
+</code></pre>
+<h4 id="arm_12">ARM汇编程序设计</h4>
+<pre><code class="language-c">//c程序g()返回5个整数的和
+int g(int a, int b, int c, int d ,int e) 
+{
+    return a + b + c + d + e；
+}
+</code></pre>
+<pre><code class="language-arm">; 利用堆栈进行子程序调用返回
+TITLE 汇编函数中调用C函数实现加：a+2a+3a+4a+5a, a=12
+EXPORT f ; 声明符号f可被其他文件引用
+AREA f, CODE, READONLY
+IMPORT g  ; 使用伪操作IMPORT声明C程序g()
+    STR lr, [sp, #-4]!  ; 保存返回地址(堆栈满递减), 被调用, 保存的地址为调用程序的下一条指令地址
+    MOV r0, #12     ; a = 12
+    ADD r1, r0, r0  ; r1 = 2*r0
+    ADD r2，r1，r0  ; r2 = 3*r0
+    ADD r3，r1，r2  ; r3 = 5*r0
+    STR r3, [sp, #-4]! ; 第五个参数通过数据栈传递
+    ADD r3, r1, r1   ; r3值设为4×i
+    BL g  ; 调用C程序
+    ADD sp, sp, #4   ; 调整数据栈指针，准备返回
+    LDR pc, [sp], #4  ; 返回
+END
+</code></pre>
+<pre><code class="language-arm">; 利用LR进行子程序调用返回
+TITLE 子程序调用示例
+AREA Init, CODE, READONLY
+ENTRY
+start 
+    MOV R0, #10
+    MOV R1, #30 
+    BL subname ; 调用子程序subname
+return
+    MOV R2, R0
+    ...
+subname 
+    ADD R0, R0, R1 ; 子程序
+    MOV PC, LR     ; 从子程序返回
+END
+</code></pre>
+<pre><code class="language-c">// 求最大公约数
+int gcd (int a , int b)
+{
+    while (a!=b){
+        if (a&gt;b) 
+            a=a-b;
+        else 
+            b=b-a;
+    }
+    return a;
+}
+</code></pre>
+<pre><code class="language-arm">TITLE 求最大公约数——Version1
+AREA gcd, CODE, READONLY ALIGN=3
+ENTRY
+start 
+    CMP R0, R1
+    BEQ stop
+    BLT less
+    SUB R0, R0, R1
+    B start
+less 
+    SUB R1, R1, R0
+    B start
+stop 
+    NOP
+    MOV PC, LR
+</code></pre>
+<pre><code class="language-arm">TITLE 求最大公约数——Version2[条件执行]
+AREA gcd, CODE, READONLY ALIGN=3
+ENTRY
+start
+    CMP R0, R1   ; 比较a和b大小
+    SUBGT R0, R0, R1 ; if(a&gt;b) a=a-b
+    SUBLT R1, R1, R0 ; if(a&lt;b) b=b-a
+    BNE start        ; if(a!=b) 跳转，继续
+    MOV PC, LR
+</code></pre>
+<pre><code class="language-c">if (a==0 || b==1)
+    c = d + e;
+</code></pre>
+<pre><code class="language-arm">; 条件判断的等价写法
+CMP R0, #0
+CMPNE R1, #1
+ADDEQ R2, R3, R4
+</code></pre>
+<pre><code class="language-arm">TITLE 数据块复制
+AREA Block, CODE, READONLY ; 设置本段程序的名称(Block)及属性
+num EQU 20 ; 设置将要复制的字数
+ENTRY
+start 
+    LDR r0, =src  ; r0寄存器指向源数据区src
+    LDR r1, =dst  ; r1寄存器指向目标数据区dst
+    MOV r2, #num  ; r2指定将要复制的字数
+    MOV sp, #0x400  ; 设置数据栈指针(r13), 用于保存工作寄存器数值
+Blockcopy   ; 进行以8个字为单位的数据复制
+    MOVS r3, r2, LSR #3 ; 需要进行的以8个字为单位的复制次数
+    BEQ Copywords       ; 对于剩下不足8个字的数据, 跳转到copywords，以字为单位复制
+    STMFD sp!, {r4-r11} ; 保存工作寄存器
+Octcopy
+    LDMIA r0!, {r4-r11} ; 从源数据区读取8个字的数据, 放到8个寄存器中, 并更新源数据区指针r0
+    STMIA r1!，{r4-r11} ; 将这8个字数据写入到目标数据区中, 并更新目标数据区指针r1
+    SUBS r3, r3, #1     ; 将块复制次数减1
+    BNE Octcopy         ; 循环, 直到完成以8个字为单位的块复制
+    LDMFD sp!, {r4-r11} ; 恢复工作寄存器值
+Copywords
+    ANDS r2, r2, #7     ; 剩下不足8个字的数据的字数
+    BEQ Stop            ; 数据复制完成
+Wordcopy
+    LDR r3, [r0], #4    ; 从源数据区读取1个字的数据, 放到r3寄存器中并更新目标数据区指针r0
+    STR r3, [r1], #4    ; 将这r3中数据写入到目标数据区中, 并更新目标数据区指针r1
+    SUBS r2, r2, #1     ; 将字数减1
+    BNE Wordcopy        ; 循环，直到完成以字为单位的数据复制
+Stop
+    MOV r0, #0x18      ; 程序退出
+    LDR r1, =0x20026
+    SWI 0x123456
+
+AREA BlockData, DATA, READWRITE ; 定义数据区
+    Src DCD 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4 
+    ; 定义源数据区src
+    Dst DCD 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 
+    ; 定义目标数据区dst
+END ;结束汇编
+</code></pre>
+<pre><code class="language-arm">TITLE 跳转表实现程序跳转
+AREA Jump, CODE, READONLY ; 设置本段程序的名称(Jump)及属性
+num EQU 2 ; 跳转表中的子程序个数
+ENTRY ; 程序执行的入口点
+Start
+    MOV r0, #0 ; 设置3个参数，然后调用子程序arithfunc，进行算术运算
+    MOV r1, #3 
+    MOV r2, #2
+    BL arithfunc ; 调用子程序arithfunc
+Stop
+    MOV r0, #0x18    ; 程序退出
+    LDR r1, =0x20026
+    SWI 0x123456
+
+Arithfunc ; 子程序arithfunc入口点
+    CMP r0, #num ; 判断选择子程序的参数是否在有效范围之内
+    MOVHS pc, lr ; 若不在，则直接返回
+    ADR r3, JumpTable   ; 读取跳转表的基地址(ADR是伪指令)
+    LDR pc, [r3, r0, LSL #2] ; 根据参数r0的值跳转到相应的子程序
+JumpTable
+    DCD DoAdd
+    DCD DoSub
+DoAdd ; 子程序DoAdd执行加法操作
+    ADD r0, r1, r2
+    MOV pc, lr
+DoSub ; 子程序DoSub执行减法操作
+    SUB r0, r1, r2
+    MOV pc, lr
+END ; 结束汇编
+</code></pre>
+<h2 id="contributors">Contributors</h2>
+<ul>
+<li><a href="https://lzhms.github.io/">Zhihao Li</a></li>
+<li><a href="https://github.com/Echo-flipped">Jiawei Hu</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 3, 2024</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 3, 2024</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="贡献者">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:lizhihaoms@gmail.com">Zhihao Li</a>
+    </nav>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    
+      
+  <span class="md-icon" title="贡献者">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"/></svg>
+  </span>
+  <span>GitHub</span>
+
+    
+    <nav>
+      
+        <a href="https://github.com/LZHMS" class="md-author" title="@LZHMS">
+          
+          <img src="https://avatars.githubusercontent.com/u/131608290?v=4&size=72" alt="LZHMS">
+        </a>
+      
+      
+      
+    </nav>
+  </span>
+
+    
+  </aside>
+
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+        data-repo="LZHMS/Discussion"
+        data-repo-id="R_kgDOMsC_6Q"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMsC_6c4CiKeP"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 计算机理论">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                计算机理论
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Mathematics/" class="md-footer__link md-footer__link--next" aria-label="下一页: Math">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Math
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Xidian CS
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/LZHMS/XidianCS" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:zhihaoli2003@outlook.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+      
+      
+    
+    <a href="https://lzhms.github.io/" target="_blank" rel="noopener me" title="lzhms.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.5 102.5 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5m-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.top", "header.autohide", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
