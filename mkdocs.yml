@@ -1,0 +1,86 @@
+site_name: 西电计科学习指南
+site_url: https://lzhms.github.io/XidianCS
+repo_name: LZHMS/XidianCS
+repo_url: https://github.com/LZHMS/XidianCS
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  favicon: images/favicon.png
+  icon:
+    logo: material/library
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      primary: teal
+      accent: deep purple
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - header.autohide
+    - navigation.footer
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.follow
+
+copyright: Copyright &copy; 2024 Xidian CS
+nav:
+  - 主页: 
+    - index.md
+    - 前言: Home/Introduction.md
+  - 计算机理论:
+    - ComputerTheory/index.md
+    - 自主可控嵌入式系统: ComputerTheory/EmbeddedSystem.md
+  - 数学基础:
+    - Mathematics/index.md
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: LZHMS/XidianCS
+      branch: main
+  - git-authors
+
+extra:
+  social:
+    - icon: fontawesome/brands/github 
+      link: https://github.com/LZHMS/XidianCS
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:zhihaoli2003@outlook.com
+    - icon: fontawesome/brands/mastodon
+      link: https://lzhms.github.io/    
+
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
