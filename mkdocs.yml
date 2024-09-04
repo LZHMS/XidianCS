@@ -56,6 +56,7 @@ nav:
   - 主页: 
     - index.md
     - 前言: Home/Introduction.md
+    - 贡献指南: Home/Contributing.md
     - 课程模板: Home/Template.md
   - 计科大类基础课:
     - CSBasic/index.md
