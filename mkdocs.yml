@@ -54,8 +54,8 @@ theme:
 copyright: Copyright &copy; 2024 Xidian CS
 nav:
   - 主页: 
-    - index.md
-    - 前言: Home/Introduction.md
+    - 站点简介: Home/Profile.md
+    - 站点前言: Home/Introduction.md
     - 贡献指南: Home/Contributing.md
     - 课程模板: Home/Template.md
   - 计科大类基础课:

@@ -16,6 +16,13 @@ comments: true
     ```shell
     $ pip install -r requirements.txt
     ```
+4. 由于 `mkdocs-git-committers-plugin-2` 插件的特性，首先需要提交一次
+    ```shell
+    $ git init
+    $ git branch -M main
+    $ git add .
+    $ git commit -m "first commit"
+    ```
 4. 启动 mkdocs 本地服务
     ```shell
     $ mkdocs serve

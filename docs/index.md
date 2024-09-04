@@ -1,21 +1,35 @@
 # 西电计科学习指南
 
-本站涵盖了西电计算机科学与技术专业的所有课程，包括课程简介、课件、实验、作业、考试、历年真题等资源。希望对大家的学习有所帮助。其中，有不少学长分享了自己的宝贵经验，我们尽最大可能保证资源的优质性，但难免会有疏漏，如有问题，请及时反馈。
-
-+ 由于本站旨在提供学习指导，所有相关资源均进行了转接，请转至相应地址进行下载；
-
-## 招收资源
-
-+ 你是否想要留下当年自己的课程学习足迹？
-+ 你是否对自己辛勤的课程总结感到不舍？
-+ 你是否想要帮助学弟学妹指点迷津？
-
-只要你有意愿，我们都会非常欢迎各位为仓库建设共享自己的宝贵力量！当然。如果你有想了解的方面而我们没有整理，也欢迎随时联系我们，我们会尽快补充！
-
-## 仓库维护
-
-本学长组竭诚邀请各位学弟学妹加入我们，共同维护本仓库，为西电计科学子提供更好的学习资源。
-
-## 联系我们
-
-你可以直接发邮件给我：zhihaoli@stu.xidian.edu.cn，如果你有任何问题，欢迎在仓库提一个issue，我们会尽快回复你。
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+入学伊始，师长引领；
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+西电精魂，何处传承？
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+思政军体，铸魂锻身；
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+通识选修，趣学相迎。
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+数理基础，求真务实；
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+专业课程，奋进为志。
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+前途何在，书海探秘；
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+代代相传，一站解疑。
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+见此指南，愿君珍惜；
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+前辈泪下，学问须思。
+</div>
+<div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
+世代进步，唯勤不息！
+</div>
