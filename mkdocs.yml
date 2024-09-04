@@ -6,7 +6,7 @@ theme:
   name: material
   custom_dir: overrides
   language: zh
-  favicon: images/favicon.png
+  favicon: Images/favicon.png
   icon:
     logo: material/library
     previous: fontawesome/solid/angle-left
@@ -56,6 +56,7 @@ nav:
   - 主页: 
     - index.md
     - 前言: Home/Introduction.md
+    - 课程模板: Home/Template.md
   - 计科大类基础课:
     - CSBasic/index.md
     - 思政军体课:
@@ -65,9 +66,14 @@ nav:
       - 高等数学(I): CSBasic/Maths/AdvancedMath1.md
     - 国际双创课: CSBasic/Internation/index.md
     - 专业基础课:
+      - CSBasic/ProfBase/index.md
       - 计算机导论与程序设计: CSBasic/ProfBase/ComputerIntroduction.md
     - 专业核心课:
+      - CSBasic/ProfCore/index.md
       - 数据结构: CSBasic/ProfCore/DataStructure.md
+    - 专业任选课:
+      - CSBasic/ProfAny/index.md
+      - 组合数学: CSBasic/ProfAny/Combinatorics.md
   
   - 计科嵌入式系统方向:
     - EmbeddedSystem/index.md
@@ -77,9 +83,20 @@ nav:
     - Intelligence/index.md
   - 计科网络与信息安全方向:
     - Network/index.md
+  - 计科试点班:
+    - 卓越班:
+      - Pilot/ZhuoYue/index.md
+    - 拔尖班:
+      - Pilot/BaJian/index.md
+  - 计科保研:
+    - 2021级保研情况:
+      - BaoYan/2021Level/index.md
+      - 夏令营成绩排名: BaoYan/2021Level/Summer.md
+      - 预推免成绩排名: BaoYan/2021Level/Prerecom.md
   
 plugins:
   - search
+  - table-reader
   - git-revision-date-localized:
       enable_creation_date: true
   - git-committers:
@@ -96,7 +113,18 @@ extra:
     - icon: fontawesome/brands/mastodon
       link: https://lzhms.github.io/    
 
+markdown_extensions:
+  - tables
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+extra_javascript:
+  - Configuration/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
-  - stylesheets/extra.css
+  - Configuration/stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
