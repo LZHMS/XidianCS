@@ -15,8 +15,8 @@ jobs:
           fetch-depth: 0
       - name: Configure Git Credentials
         run: |
-          git config user.name "Zhihao Li"
-          git config user.email "lizhihaoms@gmail.com"
+          git config user.name "Jiawei Hu"
+          git config user.email "1444980878@qq.com"
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
