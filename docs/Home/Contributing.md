@@ -43,6 +43,14 @@ comments: true
 │   ├── BaoYan/               # 计科保研情况
 │   ├── Configuration/        # 站点个性化配置
 │   ├── CSBasic/              # 计科大类基础课
+│   │   ├── General/            # 通识选修课
+│   │   ├── Internation/        # 国际双创课
+│   │   ├── Maths/              # 数理基础课
+│   │   ├── Politics/           # 思政军体课
+│   │   ├── ProfAny/            # 专业任选课
+│   │   ├── ProfBase/           # 专业基础课
+│   │   ├── ProfBase/           # 专业基础课
+│   │   └── ProfCore/           # 专业核心课
 │   ├── EmbeddedSystem/       # 计科嵌入式系统方向
 │   ├── Home/                 # 主页文件夹
 │   ├── Images/               # 图像资源
@@ -62,6 +70,7 @@ comments: true
 我们非常欢迎你对本网站进行任何贡献，包括完善、更新页面内容，添加新页面，样式修改等等。但为了规范管理，也请遵循以下几条建议：
 
 对于增添页面：
+
 + 如果你觉得该页面需要开启评论功能，请在页面顶部添加以下代码：
     ```markdown
     ---
@@ -81,13 +90,20 @@ comments: true
 #### Pull Request（推荐）
 推荐通过 PR（即 Pull Request）的形式来进行贡献，具体流程：
 
-- 在 GitHub 网页端点击右上角的 fork，将本仓库 fork 到自己的账号下
-- 在自己账号的对应仓库中进行修改
-- 修改完成后，点击 New pull request，提交一个 PR
-- 等待其他人审核、修改，然后合并到本 repo 中
+- 在 GitHub 网页端点击右上角的 fork，将本仓库 fork 到自己的账号下，只克隆 `main` 分支就行；
+- 在自己账号的对应仓库中进行修改；
+- 修改完成后，点击 New pull request，提交一个 PR，注意选择 `master` 分支，其为选定的测试分支；
+- 等待其他人审核、修改，然后合并到本 repo 中；
 
 #### 直接提交
 对于在 Organization 中的同学，如果实在觉得 PR 过程有些复杂，也可以直接修改、提交到本仓库中（可以在线修改，也可以 clone 到本地修改然后 commit、push）。如果在提交中存在问题，我们后续会及时进行修改。（不过还是不推荐这种方式）
 
 ### 站点部署
 本网站采用 Github Action 进行自动部署，所以如果你需要安装新的安装包，请将 `pip` 安装命令添加到对应的 `ci.yml` 文件中，并且修改对应的提交人信息包括 `user.name` 和 `user.email`。
+
+选择部署到自己仓库，
+
++ 修改配置文件 `mkdocs.yml` 中的站点网址以及仓库名；
++ 修改 `ci.yml` 文件中的 `name` 和 `email`；
++ 提交到仓库，待自动部署完成后，开启 `page` 服务，选择 `gh-pages` 分支即可。
+
