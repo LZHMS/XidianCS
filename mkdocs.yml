@@ -1,7 +1,7 @@
 site_name: 西电计科学习指南
-site_url: https://lzhms.github.io/XidianCS
-repo_name: LZHMS/XidianCS
-repo_url: https://github.com/LZHMS/XidianCS
+site_url: https://jiaweiHu-XDU.github.io/XidianCS
+repo_name: jiaweiHu-XDU/XidianCS
+repo_url: https://github.com/jiaweiHu-XDU/XidianCS
 theme:
   name: material
   custom_dir: overrides
@@ -102,7 +102,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
   - git-committers:
-      repository: LZHMS/XidianCS
+      repository: jiaweiHu-XDU/XidianCS
       branch: main
   - git-authors
 
