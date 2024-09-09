@@ -5,6 +5,12 @@
             "last_commit_date": "2024-09-09",
             "authors": [
                 {
+                    "login": "jiaweiHu-XDU",
+                    "name": "jiaweiHu-XDU",
+                    "url": "https://github.com/jiaweiHu-XDU",
+                    "avatar": "https://avatars.githubusercontent.com/u/104248956?v=4"
+                },
+                {
                     "login": "LZHMS",
                     "name": "LZHMS",
                     "url": "https://github.com/LZHMS",
@@ -20,6 +26,12 @@
                     "name": "LZHMS",
                     "url": "https://github.com/LZHMS",
                     "avatar": "https://avatars.githubusercontent.com/u/131608290?v=4"
+                },
+                {
+                    "login": "jiaweiHu-XDU",
+                    "name": "jiaweiHu-XDU",
+                    "url": "https://github.com/jiaweiHu-XDU",
+                    "avatar": "https://avatars.githubusercontent.com/u/104248956?v=4"
                 }
             ]
         },
@@ -214,6 +226,12 @@
             "last_commit_date": "2024-09-09",
             "authors": [
                 {
+                    "login": "jiaweiHu-XDU",
+                    "name": "jiaweiHu-XDU",
+                    "url": "https://github.com/jiaweiHu-XDU",
+                    "avatar": "https://avatars.githubusercontent.com/u/104248956?v=4"
+                },
+                {
                     "login": "LZHMS",
                     "name": "LZHMS",
                     "url": "https://github.com/LZHMS",
@@ -269,6 +287,12 @@
             "last_commit_date": "2024-09-09",
             "authors": [
                 {
+                    "login": "jiaweiHu-XDU",
+                    "name": "jiaweiHu-XDU",
+                    "url": "https://github.com/jiaweiHu-XDU",
+                    "avatar": "https://avatars.githubusercontent.com/u/104248956?v=4"
+                },
+                {
                     "login": "LZHMS",
                     "name": "LZHMS",
                     "url": "https://github.com/LZHMS",
@@ -291,10 +315,21 @@
             "last_commit_date": "2024-09-09",
             "authors": [
                 {
-                    "login": "LZHMS",
-                    "name": "LZHMS",
-                    "url": "https://github.com/LZHMS",
-                    "avatar": "https://avatars.githubusercontent.com/u/131608290?v=4"
+                    "login": "jiaweiHu-XDU",
+                    "name": "jiaweiHu-XDU",
+                    "url": "https://github.com/jiaweiHu-XDU",
+                    "avatar": "https://avatars.githubusercontent.com/u/104248956?v=4"
+                }
+            ]
+        },
+        "docs/BaoYan/2021Level/SummerCamp/YiZhang.md": {
+            "last_commit_date": "2024-09-09",
+            "authors": [
+                {
+                    "login": "EnderDragonzy",
+                    "name": "EnderDragonzy",
+                    "url": "https://github.com/EnderDragonzy",
+                    "avatar": "https://avatars.githubusercontent.com/u/102134771?v=4"
                 }
             ]
         }
