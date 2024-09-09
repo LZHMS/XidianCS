@@ -72,6 +72,7 @@ nav:
     - 专业核心课:
       - CSBasic/ProfCore/index.md
       - 数据结构: CSBasic/ProfCore/DataStructure.md
+      - 微机原理与系统设计: CSBasic/ProfCore/MicroComputer.md
     - 专业任选课:
       - CSBasic/ProfAny/index.md
       - 组合数学: CSBasic/ProfAny/Combinatorics.md
@@ -126,6 +127,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons
   - pymdownx.tabbed:
       alternate_style: true
 
