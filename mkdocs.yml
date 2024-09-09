@@ -95,6 +95,7 @@ nav:
     - 2021级保研情况:
       - BaoYan/2021Level/index.md
       - 夏令营成绩排名: BaoYan/2021Level/Summer.md
+      - 夏令营情况: BaoYan/2021Level/SummerCamp/ZhangYi.md
       - 预推免成绩排名: BaoYan/2021Level/Prerecom.md
   
 plugins:
