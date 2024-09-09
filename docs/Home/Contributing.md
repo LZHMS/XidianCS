@@ -49,7 +49,6 @@ comments: true
 │   │   ├── Politics/           # 思政军体课
 │   │   ├── ProfAny/            # 专业任选课
 │   │   ├── ProfBase/           # 专业基础课
-│   │   ├── ProfBase/           # 专业基础课
 │   │   └── ProfCore/           # 专业核心课
 │   ├── EmbeddedSystem/       # 计科嵌入式系统方向
 │   ├── Home/                 # 主页文件夹
