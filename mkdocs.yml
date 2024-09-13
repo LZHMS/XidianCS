@@ -11,6 +11,7 @@ theme:
     logo: material/library
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
+
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -58,6 +59,7 @@ nav:
     - 站点前言: Home/Introduction.md
     - 贡献指南: Home/Contributing.md
     - 课程模板: Home/Template.md
+    - 写作语法: Home/WritingUsage.md
   - 计科大类基础课:
     - CSBasic/index.md
     - 思政军体课:
@@ -125,6 +127,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - footnotes
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji

@@ -16,7 +16,7 @@ comments: true
 一只21级计算机科学与技术卓越班的菜鸡，跟随卓越班“3+3”本硕一贯制政策，目前在本校计科院嵌入式所读研(当牛马bushi)。在本科三年期间，尝试了卷均分和卷竞赛后决定躺平保内。我会从个人经历出发，介绍大家可能会接触参与的一些社团、竞赛，讲述有关卓越班的保研经验，希望能给学弟学妹们带来帮助。
 
 ### 起笔之缘由
-在西电计算机科学与技术专业，其实也已经有不少学长创建了相应的仓库资源或者是经验分享，比如 :simple-github: [XidianCS - 西安电子科技大学计算机科学与技术课程资源](https://github.com/SincereXIA/XidianCS)、:svg-docs: [XDU-CS-Learning-Cracker](https://xdu-cs-learning.readthedocs.io/en/latest/)、:svg-csdn: [xducs学习经验分享](https://blog.csdn.net/qq_45717425/article/details/114377616)、:svg-csdn: [关于西电计科本科学习的一些经验分享与资料汇总](https://blog.csdn.net/zimuzi2019/article/details/132537657)、:svg-zhihu: [西电的本科教育存在哪些问题？](https://www.zhihu.com/question/477478128/answer/2047620602)，他们或者从各个方向整理课程资源、或者从多个方面分享四年学习期间的经验与心得，但是对于学习经验与学习资源仍然没有做出统一的整合以及对课程学习缺少全方面的评价，甚至对于历届保研情况都没有提供任何的价值参考，而这对于激动人心的西电分方向博弈而言是至关重要的。
+在西电计算机科学与技术专业，其实也已经有不少学长创建了相应的仓库资源或者是经验分享，比如 :simple-github: [XidianCS - 西安电子科技大学计算机科学与技术课程资源](https://github.com/SincereXIA/XidianCS)、:svg-docs: [XDU-CS-Learning-Cracker](https://xdu-cs-learning.readthedocs.io/en/latest/)、:svg-csdn: [xducs学习经验分享](https://blog.csdn.net/qq_45717425/article/details/114377616)、:svg-csdn: [关于西电计科本科学习的一些经验分享与资料汇总](https://blog.csdn.net/zimuzi2019/article/details/132537657)、:svg-zhihu: [西电的本科教育存在哪些问题？](https://www.zhihu.com/question/477478128/answer/2047620602)，他们或者从各个方向整理课程资源、或者从多个方面分享四年学习期间的经验与心得，但是对于学习经验与学习资源仍然没有做出统一的整合以及对课程学习缺少全方面的评价，甚至对于历届保研情况都没有提供可靠的排名和成绩参考，而这对于激动人心的西电分方向博弈而言是至关重要的。
 
 !!! note "本站使命"
     因此，这正是本站的使命所在，整合所有西电计科资源、提供全面的经验分享，打造西电计科传承手册。
