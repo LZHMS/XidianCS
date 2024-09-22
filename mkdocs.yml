@@ -82,6 +82,7 @@ nav:
   - 计科嵌入式系统方向:
     - EmbeddedSystem/index.md
     - 自主可控嵌入式系统设计: EmbeddedSystem/EmbeddedSystem.md
+    - 数字信号处理: EmbeddedSystem/DigitalSignal.md
   - 计科软件与理论方向:
     - SoftwareTheory/index.md
   - 计科大数据智能方向:
