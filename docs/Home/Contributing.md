@@ -16,13 +16,6 @@ comments: true
     ```shell
     $ pip install -r requirements.txt
     ```
-4. 由于 `mkdocs-git-committers-plugin-2` 插件的特性，首先需要提交一次
-    ```shell
-    $ git init
-    $ git branch -M main
-    $ git add .
-    $ git commit -m "first commit"
-    ```
 4. 启动 mkdocs 本地服务
     ```shell
     $ mkdocs serve
@@ -50,15 +43,15 @@ comments: true
 │   │   ├── ProfAny/            # 专业任选课
 │   │   ├── ProfBase/           # 专业基础课
 │   │   └── ProfCore/           # 专业核心课
-│   ├── EmbeddedSystem/       # 计科嵌入式系统方向
 │   ├── Home/                 # 主页文件夹
 │   ├── Images/               # 图像资源
+│   ├── Tables/               # 表格资源
+│   ├── index.md              # 主页
+|   ├── EmbeddedSystem/       # 计科嵌入式系统方向
 │   ├── Intelligence/         # 计科大数据智能方向
 │   ├── Network/              # 计科网络与信息安全方向
-│   ├── Pilot/                # 计科试点班
 │   ├── SoftwareTheory/       # 计科软件与理论方向
-│   ├── Tables/               # 表格资源
-│   └── index.md              # 主页
+│   └── Pilot/                # 计科试点班
 ├── mkdocs.yml          # mkdocs 站点设置
 ├── overrides/          # mkdocs-material 个性主题设置
 ├── README.md           # 站点、仓库介绍
@@ -88,11 +81,54 @@ comments: true
 ### 贡献方式
 #### Pull Request（推荐）
 推荐通过 PR（即 Pull Request）的形式来进行贡献，具体流程：
-
+##### 操作概述
 - 在 GitHub 网页端点击右上角的 fork，将本仓库 fork 到自己的账号下，只克隆 `main` 分支就行；
 - 在自己账号的对应仓库中进行修改；
 - 修改完成后，点击 New pull request，提交一个 PR，注意选择 `master` 分支，其为选定的测试分支；
 - 等待其他人审核、修改，然后合并到本 repo 中；
+
+##### 详细步骤
+1. 删除仓库原有 git 配置
+    ```shell
+    $ rm -rf .git
+    ```
+2. 初始化并配置自己的帐户和仓库
+    ```shell
+    $ git config user.name "Your Name"
+    $ git config user.email "youremail@domain.com"
+    $ git remote add origin https://github.com/YourName/YourRepo.git
+    ```
+3. 配置 Github Action 的工作流
+    在 `.github/workflows/ci.yml` 文件中修改对应的 `user.name` 和 `user.email` 配置，内容如下：
+    ```bash
+    run: |
+        git config user.name "Your Name"
+        git config user.email "youremail@domain.com"
+    ```
+4. 初始化仓库并创建分支
+    ```shell
+    $ git init
+    $ git branch -m main
+    ```
+    `.github/workflows/ci.yml` 文件中以下配置，表示 Github Action 在每次 push 到 `main` 分支时，自动构建并部署网站，因此在创建分支时，如果需要部署到自己仓库的 Page 页面则一定要选择 `main` 分支。
+    ```bash
+    on:
+        push:
+            branches: 
+                - main
+    ```
+5. 修改并提交到仓库
+    修改对应的内容完毕后，可以将其提交到自己的仓库中。
+    ```shell
+    $ git add .
+    $ git commit -m "Your commit message"
+    $ git push origin main
+    ```
+6. 在自己的仓库中开启 Github Pages
+    如下图所示，对应 `Pages` 选项下，选择 `Deploy from a brach` 然后对应下方选择 `gh-pages` 分支，然后点击 `Save` 保存即可。这样等待部署完毕后，就可以在域名：`https://YourName.github.io/YourRepo` 中访问到本站了。
+    <img src="https://lzhms.oss-cn-hangzhou.aliyuncs.com/images/docs/xdu/202409261133675.png" alt="Github Pages"/>
+7. 提交 PR
+    在自己的仓库中点击 `New pull request`，然后选择 `master` 分支，然后点击 `Create pull request`，等待审核即可。
 
 #### 直接提交
 对于在 Organization 中的同学，如果实在觉得 PR 过程有些复杂，也可以直接修改、提交到本仓库中（可以在线修改，也可以 clone 到本地修改然后 commit、push）。如果在提交中存在问题，我们后续会及时进行修改。（不过还是不推荐这种方式）
