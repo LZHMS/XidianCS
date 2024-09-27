@@ -9,4 +9,4 @@
 {{ read_excel('Tables/BaoYan/2021/CSRecom.xlsx', sheet_name='Sheet1') }}
 
 ## 所有专业推荐免试名单
-+ [西安电子科技大学2025年推荐免试攻读硕士学位研究生汇总名单]()
++ [西安电子科技大学2025年推荐免试攻读硕士学位研究生汇总名单](../../Tables/BaoYan/2021/Recom.xlsx)
