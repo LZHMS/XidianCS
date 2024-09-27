@@ -47,7 +47,7 @@ comments: true
 │   ├── Images/               # 图像资源
 │   ├── Tables/               # 表格资源
 │   ├── index.md              # 主页
-|   ├── EmbeddedSystem/       # 计科嵌入式系统方向
+│   ├── EmbeddedSystem/       # 计科嵌入式系统方向
 │   ├── Intelligence/         # 计科大数据智能方向
 │   ├── Network/              # 计科网络与信息安全方向
 │   ├── SoftwareTheory/       # 计科软件与理论方向

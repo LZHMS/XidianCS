@@ -101,6 +101,7 @@ nav:
       - 夏令营情况: 
         - YiZhang: BaoYan/2021Level/SummerCamp/YiZhang.md
       - 预推免成绩排名: BaoYan/2021Level/Prerecom.md
+      - 各专业保研名单: BaoYan/2021Level/Recom.md
   
 plugins:
   - search
