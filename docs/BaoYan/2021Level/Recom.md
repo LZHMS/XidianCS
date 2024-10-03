@@ -1,3 +1,7 @@
+---
+comments: true
+authors: [Zhihao Li]
+---
 # 西安电子科技大学2025年推荐免试攻读硕士学位研究生汇总名单
 
 !!! note "推荐名单说明"

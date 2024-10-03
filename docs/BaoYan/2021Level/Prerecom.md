@@ -1,3 +1,7 @@
+---
+comments: true
+authors: [Zhihao Li]
+---
 # 2021级计科预推免成绩排名
 
 !!! note "成绩排名说明"
