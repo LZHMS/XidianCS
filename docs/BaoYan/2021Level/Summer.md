@@ -1,6 +1,5 @@
 ---
 comments: true
-authors: [LZHMS]
 ---
 # 2021级计科夏令营成绩排名
 
