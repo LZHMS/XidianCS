@@ -1,6 +1,5 @@
 ---
 comments: true
-authors: [LZHMS]
 ---
 # 2021级计科预推免成绩排名
 
