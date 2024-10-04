@@ -111,7 +111,7 @@ plugins:
       enable_creation_date: true
   - git-committers:
       repository: LZHMS/XidianCS
-      branch: main
+      branch: master
   - git-authors
 
 extra:
