@@ -1,6 +1,6 @@
 ---
 comments: true
-authors: [Zhihao Li]
+authors: [LZHMS]
 ---
 # 考得好不如选得好
 ???+ info "前言"
