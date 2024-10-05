@@ -111,7 +111,7 @@ plugins:
   - git-committers:
       repository: LZHMS/XidianCS
       branch: master
-      token: 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
+      token: !!python/object/apply:os.getenv ["MKDOCS_GIT_COMMITTERS_APIKEY"]
 
 extra:
   social:
