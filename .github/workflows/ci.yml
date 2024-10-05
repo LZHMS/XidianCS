@@ -14,6 +14,8 @@ jobs:
         with:
           fetch-depth: 0
       - name: Configure Git Credentials
+        env:
+            MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
         run: |
           git config user.name "Zhihao Li"
           git config user.email "lizhihaoms@gmail.com"
@@ -33,5 +35,4 @@ jobs:
       - run: pip install mkdocs-git-authors-plugin
       - run: pip install openpyxl
       - run: pip install mkdocs-table-reader-plugin
-      - run: export MKDOCS_GIT_COMMITTERS_APIKEY=${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
       - run: mkdocs gh-deploy --force
