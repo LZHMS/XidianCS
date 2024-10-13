@@ -1,5 +1,6 @@
 ---
 comments: true
+contributors: EnderDragonzy
 ---
 # 计科软保研夏令营经验分享
 
