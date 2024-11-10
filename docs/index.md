@@ -1,5 +1,8 @@
 # 西电传承宣言
 
+''' note "站点迁移忠告"
+    本站点即将废止，新站点请转至：https://xducs.github.io/
+
 <div style="text-align: center; font-size: 1.5em; font-weight: 600;" markdown="1">
 入学伊始，师长引领；
 </div>
